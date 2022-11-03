@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QFileDialog, QMessageBox
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QAction, QWidget, QDockWidget, QTabWidget
 
-from qgis.core import QgsMessageLog, Qgis, QgsProject, QgsLayerTree, QgsRasterLayer
+from qgis.core import QgsCoordinateReferenceSystem, QgsMessageLog, Qgis, QgsProject, QgsLayerTree, QgsRasterLayer
 from qgis.gui import QgisInterface
 
 #from Gv3GEWRF.core import (logger)
