@@ -31,9 +31,10 @@ class TabulaDock(QDockWidget):
 #        tabs.addTab(WhiteScroll(CMAQHomeTab()), 'CMAQ')
         self.setWidget(tabs)
         self.tabs = tabs
-        self.add_stamen_basemap
+        self.add_stamen_basemap()
         
     def add_stamen_basemap() -> None:
+        print ("Adding Stamen")
         url = 'type=xyz&zmin=0&zmax=20&url=http://a.tile.stamen.com/terrain-background/{z}/{x}/{y}.png'
         attribution = 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL'
         attribution_url = 'http://maps.stamen.com'
