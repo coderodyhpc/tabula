@@ -59,7 +59,7 @@ class TabulaDock(QDockWidget):
     # Again with a delay, which is a work-around as sometimes QGIS does not apply the CRS change above.
         Timer(0.5, setWGS84).start()
 
-    def add_naip_basemap():
+    def add_naip_basemap(self):
         url = 'https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/0/0/0'
         print ('AT NAIP ',url) 
 ##    attribution = 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL'
