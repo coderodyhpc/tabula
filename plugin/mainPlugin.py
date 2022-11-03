@@ -73,8 +73,8 @@ class QGISPlugin():
 #        add_default_basemap()
 #        add_naip_basemap()
 #        self.dock_widget.hasFocus.connect(self.on_dock_focus)
-        self.iface.addWidget(
-            self.dock_widget)
+#        self.iface.addWidget(
+#            self.dock_widget)
 
     def add_action(self, icon_path: str, text: str, callback: Callable,
                    enabled_flag: bool=True, add_to_menu: bool=True,
