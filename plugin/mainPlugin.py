@@ -32,8 +32,8 @@ class TabulaDock(QDockWidget):
 #        tabs.addTab(WhiteScroll(CMAQHomeTab()), 'CMAQ')
         self.setWidget(tabs)
         self.tabs = tabs
-#        self.add_stamen_basemap()
-        self.add_naip_basemap()
+        self.add_stamen_basemap()
+#        self.add_naip_basemap()
         
     def add_stamen_basemap(self):
         print ("Adding Stamen")
