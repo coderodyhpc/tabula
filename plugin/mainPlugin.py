@@ -18,6 +18,13 @@ from qgis.gui import QgisInterface
 #from Gv3GEWRF.plugin.geo import add_default_basemap, load_wps_binary_layer
 #from Gv3GEWRF.plugin.geo import add_naip_basemap
 
+class TabulaDock(QDockWidget):
+    def __init__(self, iface: QgisInterface, dock_widget: QDockWidget) -> None:   
+        super().__init__('TABULA')
+#_____ TABS SET UP _____#
+        tabs = QTabWidget()
+        tabs.setStyleSheet('''QTabBar::tab {font-size: 10pt; font-family: Verdana; font-weight: bold; color: #004F00; height: 40px; width: 140px;}''')
+        tabs.addTab(WhiteScroll(CMAQHomeTab()), 'CMAQ')
 
 #__ Initialization of the graphic environment ___#
 class QGISPlugin():
@@ -36,9 +43,9 @@ class QGISPlugin():
 #___ These are the actions defining the different options at the Gv3GEWRF menu 
 #___ (maybe I should get rid of it and simply start the app w/o asking any Qs) 
         self.menu = '&' + 'TABULA'
-#        self.add_action(icon_path='/home/ubuntu/.local/share/QGIS/QGIS3/profiles/default/python/plugins/TABULA/logo16B.png',
-#                        text="TABULA", callback=self.show_dock, add_to_toolbar=True,
-#                        parent=self.iface.mainWindow(), status_tip='Testing TABULA')
+        self.add_action(icon_path='/home/ubuntu/.local/share/QGIS/QGIS3/profiles/default/python/plugins/TABULA/logo16B.png',
+                        text="TABULA", callback=self.show_dock, add_to_toolbar=True,
+                        parent=self.iface.mainWindow(), status_tip='Testing TABULA')
 
 #__ I believe that this might be to set up the Settings/options ___#
 #        self.options_factory = OptionsFactory() # This is at gis4wrf/plugin/ui/options.py
@@ -56,10 +63,8 @@ class QGISPlugin():
 
 #__ Functions  ___#
     def show_dock(self) -> None:
-#        Pass
-#        if not self.dock_widget:
-#            self.dock_widget = WrfDock(self.iface, self.dock_widget, self.dies)
-#            self.dock_widget = WrfDockII(self.iface)
+        if not self.dock_widget:
+            self.dock_widget = TabulaDock(self.iface, self.dock_widget, self.dies)
 #! What happens if I change Right with Left
         self.iface.addDockWidget(
             Qt.RightDockWidgetArea, self.dock_widget)
