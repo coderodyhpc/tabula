@@ -31,6 +31,54 @@ class TabulaDock(QDockWidget):
 #        tabs.addTab(WhiteScroll(CMAQHomeTab()), 'CMAQ')
         self.setWidget(tabs)
         self.tabs = tabs
+        self.add_stamen_basemap
+        
+    def add_stamen_basemap() -> None:
+        url = 'type=xyz&zmin=0&zmax=20&url=http://a.tile.stamen.com/terrain-background/{z}/{x}/{y}.png'
+        attribution = 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL'
+        attribution_url = 'http://maps.stamen.com'
+        registry = QgsProject.instance() # type: QgsProject
+        root = registry.layerTreeRoot() # type: QgsLayerTree
+
+        tree_layers = filter(QgsLayerTree.isLayer, root.children())
+        if any(tree_layer.layer().source() == url for tree_layer in tree_layers):
+            return
+        layer = QgsRasterLayer(url, 'Stamen Terrain Background', 'wms')
+        layer.setAttribution(attribution)
+        layer.setAttributionUrl(attribution_url)
+        registry.addMapLayer(layer, False)
+        root.addLayer(layer)
+
+    # Reset the Project CRS to WGS84 otherwise it will be set to the stamen layer CRS
+        def setWGS84():
+            registry.setCrs((QgsCoordinateReferenceSystem.fromProj4("+proj=longlat +datum=WGS84 +no_defs")))
+        setWGS84()
+    # Again with a delay, which is a work-around as sometimes QGIS does not apply the CRS change above.
+        Timer(0.5, setWGS84).start()
+
+#def add_naip_basemap() -> None:
+#    url = 'https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/0/0/0'
+#    print ('AT NAIP ',url) 
+##    attribution = 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL'
+##    attribution_url = 'http://maps.stamen.com'
+#    registry = QgsProject.instance() # type: QgsProject
+#    root = registry.layerTreeRoot() # type: QgsLayerTree
+
+#    tree_layers = filter(QgsLayerTree.isLayer, root.children())
+#    if any(tree_layer.layer().source() == url for tree_layer in tree_layers):
+#        return
+#    layer = QgsRasterLayer(url, 'NAIP', 'wms')
+##    layer.setAttribution(attribution)
+##    layer.setAttributionUrl(attribution_url)
+#    registry.addMapLayer(layer, False)
+#    root.addLayer(layer)
+
+    # Reset the Project CRS to WGS84 otherwise it will be set to the stamen layer CRS
+#    def setWGS84():
+#        registry.setCrs((QgsCoordinateReferenceSystem.fromProj4("+proj=longlat +datum=WGS84 +no_defs")))
+#    setWGS84()
+#    # Again with a delay, which is a work-around as sometimes QGIS does not apply the CRS change above.
+#    Timer(0.5, setWGS84).start()    
         
 #__ Initialization of the graphic environment ___#
 class QGISPlugin():
