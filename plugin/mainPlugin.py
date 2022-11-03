@@ -51,8 +51,8 @@ class QGISPlugin():
         """Removes the plugin menu item and icon from QGIS GUI.
            Note: This method is called by QGIS.
         """
-
-        self.destroy_logging()
+        Pass
+#        self.destroy_logging()
 
 #__ Functions  ___#
     def show_dock(self) -> None:
