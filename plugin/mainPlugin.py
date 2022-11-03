@@ -1,4 +1,5 @@
 from typing import List, Callable
+from threading import Timer
 import webbrowser
 import time
 import logging
@@ -113,7 +114,7 @@ class QGISPlugin():
         """Removes the plugin menu item and icon from QGIS GUI.
            Note: This method is called by QGIS.
         """
-        Pass
+        pass
 #        self.destroy_logging()
 
 #__ Functions  ___#
