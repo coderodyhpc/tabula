@@ -26,8 +26,12 @@ class TabulaDock(QDockWidget):
         tabs.setStyleSheet('''QTabBar::tab {font-size: 10pt; font-family: Verdana; font-weight: bold; color: #004F00; height: 40px; width: 140px;}''')
         self.tab1 = QWidget()
         tabs.addTab(self.tab1,"TAB 1")
+        self.tab2 = QWidget()
+        tabs.addTab(self.tab2,"TAB 2")
 #        tabs.addTab(WhiteScroll(CMAQHomeTab()), 'CMAQ')
-
+        self.setWidget(tabs)
+        self.tabs = tabs
+        
 #__ Initialization of the graphic environment ___#
 class QGISPlugin():
     def __init__(self, iface: QgisInterface) -> None:
