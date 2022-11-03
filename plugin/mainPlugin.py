@@ -64,7 +64,7 @@ class QGISPlugin():
 #__ Functions  ___#
     def show_dock(self) -> None:
         if not self.dock_widget:
-            self.dock_widget = TabulaDock(self.iface, self.dock_widget, self.dies)
+            self.dock_widget = TabulaDock(self.iface, self.dock_widget)
 #! What happens if I change Right with Left
         self.iface.addDockWidget(
             Qt.RightDockWidgetArea, self.dock_widget)
