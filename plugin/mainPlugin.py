@@ -30,15 +30,15 @@ class QGISPlugin():
         """Create the menu entries and toolbar icons inside the QGIS GUI.
            Note: This method is called by QGIS.
         """
-        self.init_logging() #This is probably to track what happens while running the plugin A.F. 
+#        self.init_logging() #This is probably to track what happens while running the plugin A.F. 
 
 #        install_user_error_handler(self.iface) #This is at plugin/ui/helpers.py
 #___ These are the actions defining the different options at the Gv3GEWRF menu 
 #___ (maybe I should get rid of it and simply start the app w/o asking any Qs) 
-        self.menu = '&' + PLUGIN_NAME
-        self.add_action(icon_path='/home/ubuntu/.local/share/QGIS/QGIS3/profiles/default/python/plugins/Gv3GEWRF/plugin/resources/WRF_logo16B.png',
-                        text="TABULA", callback=self.show_dock, add_to_toolbar=True,
-                        parent=self.iface.mainWindow(), status_tip='Run WRF')
+        self.menu = '&' + 'TABULA'
+#        self.add_action(icon_path='/home/ubuntu/.local/share/QGIS/QGIS3/profiles/default/python/plugins/TABULA/logo16B.png',
+#                        text="TABULA", callback=self.show_dock, add_to_toolbar=True,
+#                        parent=self.iface.mainWindow(), status_tip='Testing TABULA')
 
 #__ I believe that this might be to set up the Settings/options ___#
         self.options_factory = OptionsFactory() # This is at gis4wrf/plugin/ui/options.py
@@ -69,3 +69,57 @@ class QGISPlugin():
 #        self.iface.addWidget(
 #            self.dock_widget)
 
+    def add_action(self, icon_path: str, text: str, callback: Callable,
+                   enabled_flag: bool=True, add_to_menu: bool=True,
+                   add_to_toolbar: bool=False, add_to_add_layer: bool=False,
+                   status_tip: str=None, whats_this: str=None, parent: QWidget=None
+                   ) -> QAction:
+        """Helper function for creating menu items
+        Parameters
+        ----------
+        icon_path: Path to the icon for this action. Can be a resource
+            path (e.g. `:/plugins/foo/bar.png`) or a normal file system path.
+        text: Text that should be shown in menu items for this action.
+        callback: Function to be called when the action is triggered.
+        enabled_flag: A flag indicating if the action should be enabled
+            by default. Defaults to True.
+        add_to_menu: Flag indicating whether the action should also
+            be added to the menu. Defaults to True.
+        add_to_toolbar: Flag indicating whether the action should also
+            be added to the Plugins toolbar. Defaults to False.
+        add_to_layer: Flag indicating whether the action should also
+            be added to the Layer > Add Layer menu. Defaults to False.
+        status_tip: Optional text to show in a popup when mouse pointer
+            hovers over the action.
+        whats_this: Optional text to show in the status bar when the
+            mouse pointer hovers over the action after clicking on `?`.
+        parent: Parent widget for the new action. Defaults None.
+        Returns
+        -------
+        out: The action that was created. Note that the action is
+            also added to `self.actions` list.
+        """
+        icon = QIcon(icon_path)
+        action = QAction(icon, text, parent)
+        action.triggered.connect(callback)
+        action.setEnabled(enabled_flag)
+
+        if status_tip is not None:
+            action.setStatusTip(status_tip)
+
+        if whats_this is not None:
+            action.setWhatsThis(whats_this)
+
+        if add_to_toolbar:
+            self.iface.addToolBarIcon(action)
+
+        if add_to_menu:
+            self.iface.addPluginToMenu(self.menu, action)
+
+        if add_to_add_layer:
+            self.iface.insertAddLayerAction(action)
+
+        self.actions.append(action)
+
+        return action
+    
