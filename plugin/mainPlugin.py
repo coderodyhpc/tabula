@@ -41,9 +41,9 @@ class QGISPlugin():
 #                        parent=self.iface.mainWindow(), status_tip='Testing TABULA')
 
 #__ I believe that this might be to set up the Settings/options ___#
-        self.options_factory = OptionsFactory() # This is at gis4wrf/plugin/ui/options.py
-        self.iface.registerOptionsWidgetFactory(self.options_factory)
-        self.options = get_options()
+#        self.options_factory = OptionsFactory() # This is at gis4wrf/plugin/ui/options.py
+#        self.iface.registerOptionsWidgetFactory(self.options_factory)
+#        self.options = get_options()
 
 #        self.check_versions() #I'm deactivating check_versions - probably needs to be erased
 
