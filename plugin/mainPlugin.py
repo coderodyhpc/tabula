@@ -1,8 +1,6 @@
 from typing import List, Callable
 from threading import Timer
-import webbrowser
 import time
-import logging
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QFileDialog, QMessageBox
@@ -11,13 +9,6 @@ from PyQt5.QtWidgets import QAction, QWidget, QDockWidget, QTabWidget
 
 from qgis.core import QgsCoordinateReferenceSystem, QgsMessageLog, Qgis, QgsProject, QgsLayerTree, QgsRasterLayer
 from qgis.gui import QgisInterface
-
-#from Gv3GEWRF.core import (logger)
-#__ Loading of the docks for the different apps ___#
-#from Gv3GEWRF.plugin.ui.wrfIII import WrfDock
-#from Gv3GEWRF.plugin.options import get_options
-#from Gv3GEWRF.plugin.geo import add_default_basemap, load_wps_binary_layer
-#from Gv3GEWRF.plugin.geo import add_naip_basemap
 
 class TabulaDock(QDockWidget):
     def __init__(self, iface: QgisInterface, dock_widget: QDockWidget) -> None:   
@@ -94,7 +85,6 @@ class QGISPlugin():
         """Create the menu entries and toolbar icons inside the QGIS GUI.
            Note: This method is called by QGIS.
         """
-#        self.init_logging() #This is probably to track what happens while running the plugin A.F. 
 
 #        install_user_error_handler(self.iface) #This is at plugin/ui/helpers.py
 #___ These are the actions defining the different options at the Gv3GEWRF menu 
@@ -116,7 +106,6 @@ class QGISPlugin():
            Note: This method is called by QGIS.
         """
         pass
-#        self.destroy_logging()
 
 #__ Functions  ___#
     def show_dock(self) -> None:
