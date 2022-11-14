@@ -2,8 +2,8 @@ from typing import List, Callable
 from threading import Timer
 import time
 
-from PyQt5.QtCore import Qt, QgsCoordinateReferenceSystem, QgsCoordinateTransform, QgsProject
-from PyQt5.QtWidgets import QFileDialog, QMessageBox
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QFileDialog, QMessageBox, QgsCoordinateReferenceSystem, QgsCoordinateTransform, QgsProject
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QAction, QWidget, QDockWidget, QTabWidget
 
