@@ -45,12 +45,12 @@ class TabulaDock(QDockWidget):
         registry.addMapLayer(layer, False)
         root.addLayer(layer)
 
-    # Reset the Project CRS to WGS84 otherwise it will be set to the stamen layer CRS
-        def setWGS84():
-            registry.setCrs((QgsCoordinateReferenceSystem.fromProj4("+proj=longlat +datum=WGS84 +no_defs")))
-        setWGS84()
-    # Again with a delay, which is a work-around as sometimes QGIS does not apply the CRS change above.
-        Timer(0.5, setWGS84).start()
+#    # Reset the Project CRS to WGS84 otherwise it will be set to the stamen layer CRS
+#        def setWGS84():
+#            registry.setCrs((QgsCoordinateReferenceSystem.fromProj4("+proj=longlat +datum=WGS84 +no_defs")))
+#        setWGS84()
+#    # Again with a delay, which is a work-around as sometimes QGIS does not apply the CRS change above.
+#        Timer(0.5, setWGS84).start()
 
     def add_naip_basemap(self):
         url = 'https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/0/0/0'
@@ -68,14 +68,7 @@ class TabulaDock(QDockWidget):
 ##    layer.setAttributionUrl(attribution_url)
         registry.addMapLayer(layer, False)
     #    root.addLayer(layer)
-
-    # Reset the Project CRS to WGS84 otherwise it will be set to the stamen layer CRS
-        def setWGS84():
-            registry.setCrs((QgsCoordinateReferenceSystem.fromProj4("+proj=longlat +datum=WGS84 +no_defs")))
-        setWGS84()
-#    # Again with a delay, which is a work-around as sometimes QGIS does not apply the CRS change above.
-        Timer(0.5, setWGS84).start()    
-        
+       
 #__ Initialization of the graphic environment ___#
 class QGISPlugin():
     def __init__(self, iface: QgisInterface) -> None:
