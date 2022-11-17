@@ -4,8 +4,8 @@ import time
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QFileDialog, QMessageBox
-from PyQt5.QtGui import QIcon, QApplication
-from PyQt5.QtWidgets import QAction, QWidget, QDockWidget, QTabWidget
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QAction, QWidget, QDockWidget, QTabWidget, QApplication
 
 from qgis.core import QgsCoordinateReferenceSystem, QgsMessageLog, Qgis, QgsProject, QgsLayerTree, QgsRasterLayer
 from qgis.gui import QgisInterface
