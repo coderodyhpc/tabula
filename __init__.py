@@ -19,7 +19,7 @@ def classFactory(iface):
     title = iface.mainWindow().windowTitle()
     new_title = title.replace('QGIS', 'TABULA')
     iface.mainWindow().setWindowTitle(new_title)
-    self.iface.mainWindow().statusBar().showMessage(time.asctime())
+    iface.mainWindow().statusBar().showMessage(time.asctime())
 #    iface.mainWindow().removeToolBar(toolbar)
 #    vector_menu = iface.vectorMenu()
 #    raster_menu = iface.rasterMenu()
