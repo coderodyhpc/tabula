@@ -28,7 +28,8 @@ class TabulaDock(QDockWidget):
         aaa = self.crs.createFromProj4("+proj=lcc +lat_1=33.0 +lat_2=60.0 +lat_0=40.0 +lon_0=-97.0 +x_0=-792000.0 +y_0=1080000.0 +datum=WGS84 +no_defs")
         print ("AAA ",aaa)
         self.crs.saveAsUserCrs("TABULA CRS")
-        QApplication.processEvents()
+#        QApplication.processEvents()
+        QgsProject.instance().setCrs(self.crs)
 #        self.add_naip_basemap()
         
     def add_stamen_basemap(self):
