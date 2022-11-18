@@ -30,6 +30,7 @@ class TabulaDock(QDockWidget):
         self.crs.saveAsUserCrs("TABULA CRS")
 #        QApplication.processEvents()
         QgsProject.instance().setCrs(self.crs)
+        QApplication.processEvents()
 #        self.add_naip_basemap()
         
     def add_stamen_basemap(self):
