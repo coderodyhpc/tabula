@@ -29,7 +29,8 @@ class TabulaDock(QDockWidget):
         print ("AAA ",aaa)
         self.crs.saveAsUserCrs("TABULA CRS")
 #        QApplication.processEvents()
-        QgsProject.instance().setCrs(self.crs)
+        bbb = QgsProject.instance().setCrs(self.crs)
+        print ("BBB ",bbb)
         QApplication.processEvents()
 #        self.add_naip_basemap()
         
