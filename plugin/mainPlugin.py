@@ -32,6 +32,7 @@ class TabulaDock(QDockWidget):
         bbb = QgsProject.instance().setCrs(self.crs)
         print ("BBB ",bbb)
         QApplication.processEvents()
+        print ("MAP CANVAS ",iface.mapCanvas())
 #        self.add_naip_basemap()
         
     def add_stamen_basemap(self):
