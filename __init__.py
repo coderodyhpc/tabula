@@ -1,4 +1,5 @@
-import time 
+import time
+from PyQt5.QtCore import Qt, QObject
 
 def classFactory(iface):
     """Load QGISPlugin class.
