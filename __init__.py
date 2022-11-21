@@ -21,14 +21,13 @@ def classFactory(iface):
     iface.mainWindow().setWindowTitle(new_title)
     iface.mainWindow().statusBar().showMessage(time.asctime())
     
-    iface.mainWindow().blockSignals(True)
+    self.projectObj = QgsProject.instance()
+    self.projectRoot = self.projectObj.layerTreeRoot()
     self.crs = QgsCoordinateReferenceSystem()
     self.crs.createFromProj4("+proj=lcc +lat_1=33.0 +lat_2=60.0 +lat_0=40.0 +lon_0=-97.0 +x_0=-792000.0 +y_0=1080000.0 +datum=WGS84 +no_defs")
-    self.crs.saveAsUserCrs("TABULA2 CRS")
-    QgsProject.instance().setCrs(self.crs)
-    iface.mainWindow().blockSignals(False)
-#    QApplication.processEvents()
-
+    self.crs.saveAsUserCrs("TABULAPROY0 CRS")
+    self.projectObj.setCrs(self.crs)
+    
 #    iface.mainWindow().removeToolBar(toolbar)
 #    vector_menu = iface.vectorMenu()
 #    raster_menu = iface.rasterMenu()
