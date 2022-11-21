@@ -1,4 +1,5 @@
 import time 
+from qgis.core import QgsCoordinateReferenceSystem, QgsProject
 
 def classFactory(iface):
     """Load QGISPlugin class.
