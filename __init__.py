@@ -22,12 +22,12 @@ def classFactory(iface):
     iface.mainWindow().setWindowTitle(new_title)
     iface.mainWindow().statusBar().showMessage(time.asctime())
     
-    self.projectObj = QgsProject.instance()
-    self.projectRoot = self.projectObj.layerTreeRoot()
-    self.crs = QgsCoordinateReferenceSystem()
-    self.crs.createFromProj4("+proj=lcc +lat_1=33.0 +lat_2=60.0 +lat_0=40.0 +lon_0=-97.0 +x_0=-792000.0 +y_0=1080000.0 +datum=WGS84 +no_defs")
-    self.crs.saveAsUserCrs("TABULAPROY0 CRS")
-    self.projectObj.setCrs(self.crs)
+    projectObj = QgsProject.instance()
+    projectRoot = projectObj.layerTreeRoot()
+    crs = QgsCoordinateReferenceSystem()
+    crs.createFromProj4("+proj=lcc +lat_1=33.0 +lat_2=60.0 +lat_0=40.0 +lon_0=-97.0 +x_0=-792000.0 +y_0=1080000.0 +datum=WGS84 +no_defs")
+    crs.saveAsUserCrs("TABULAPROY0 CRS")
+    projectObj.setCrs(crs)
     
 #    iface.mainWindow().removeToolBar(toolbar)
 #    vector_menu = iface.vectorMenu()
