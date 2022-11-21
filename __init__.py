@@ -1,5 +1,6 @@
 import time
-from PyQt5.QtCore import Qt, QObject
+from qgis.core import QgsCoordinateReferenceSystem
+#from PyQt5.QtCore import Qt, QObject
 
 def classFactory(iface):
     """Load QGISPlugin class.
