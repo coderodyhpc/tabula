@@ -24,14 +24,16 @@ class TabulaDock(QDockWidget):
         self.setWidget(tabs)
         self.tabs = tabs
         self.add_stamen_basemap()
+        
+        iface.mainWindow().blockSignals(True)
         self.crs = QgsCoordinateReferenceSystem()
-        aaa = self.crs.createFromProj4("+proj=lcc +lat_1=33.0 +lat_2=60.0 +lat_0=40.0 +lon_0=-97.0 +x_0=-792000.0 +y_0=1080000.0 +datum=WGS84 +no_defs")
-        print ("AAA ",aaa)
-        self.crs.saveAsUserCrs("TABULA CRS")
+        self.crs.createFromProj4("+proj=lcc +lat_1=33.0 +lat_2=60.0 +lat_0=40.0 +lon_0=-97.0 +x_0=-792000.0 +y_0=1080000.0 +datum=WGS84 +no_defs")
+#        print ("AAA ",aaa)
+        self.crs.saveAsUserCrs("TABULA2 CRS")
 #        QApplication.processEvents()
-        bbb = QgsProject.instance().setCrs(self.crs)
-        print ("BBB ",bbb)
-        QApplication.processEvents()
+        QgsProject.instance().setCrs(self.crs)
+        iface.mainWindow().blockSignals(False)
+#        QApplication.processEvents()
 #        self.add_naip_basemap()
         
     def add_stamen_basemap(self):
