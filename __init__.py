@@ -11,12 +11,12 @@ def classFactory(iface):
     """
 
     from tabula.plugin.mainPlugin import QGISPlugin
-#    project = QgsProject.instance()
-#    project.setTitle('HOLAAAA')
-#    project.write()
-    title = iface.mainWindow().windowTitle()
-    new_title = title.replace('QGIS', 'TABULA')
-    iface.mainWindow().setWindowTitle(new_title)
+    project = QgsProject.instance()
+    project.setTitle('MODELING')
+    project.write()
+#    title = iface.mainWindow().windowTitle()
+#    new_title = title.replace('QGIS', 'TABULA')
+#    iface.mainWindow().setWindowTitle(new_title)
 #    iface.mainWindow().removeToolBar(toolbar)
 #    vector_menu = iface.vectorMenu()
 #    raster_menu = iface.rasterMenu()
