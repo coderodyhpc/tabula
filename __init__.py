@@ -1,3 +1,5 @@
+from PyQt5.QtWidgets import QToolBar
+
 def classFactory(iface):
     """Load QGISPlugin class.
     Parameters
