@@ -24,7 +24,7 @@ def classFactory(iface):
 #    database_menu = iface.databaseMenu()
 #    web_menu = iface.webMenu()
 #    processing_menu = iface.processingMenu()
-#    menubar = vector_menu.parentWidget()
+    menubar = vector_menu.parentWidget()
 #    menubar.removeAction(raster_menu.menuAction())
     menubar.removeAction(vector_menu.menuAction())
 #    menubar.removeAction(database_menu.menuAction())
