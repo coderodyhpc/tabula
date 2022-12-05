@@ -15,6 +15,7 @@ def classFactory(iface):
 #    project.setTitle('HOLAAAA')
 #    project.write()
     title = iface.mainWindow().windowTitle()
+    toolbar = QToolBar()
     new_title = title.replace('QGIS', 'TABULA')
     iface.mainWindow().setWindowTitle(new_title)
     iface.mainWindow().removeToolBar(toolbar)
