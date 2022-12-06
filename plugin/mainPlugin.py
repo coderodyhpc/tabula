@@ -24,6 +24,9 @@ class TabulaDock(QDockWidget):
         self.setWidget(tabs)
         self.tabs = tabs
         self.add_stamen_basemap()
+        for layer in QgsProject.instance().mapLayers().values():
+            print ("IT IS AT LAYER ",layer)
+            layer.setCrs(QgsCoordinateReferenceSystem('EPSG:4979'))
 #        self.add_naip_basemap()
         
     def add_stamen_basemap(self):
