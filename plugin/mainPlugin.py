@@ -25,6 +25,9 @@ class TabulaDock(QDockWidget):
         self.tabs = tabs
 #        self.add_stamen_basemap()
         self.worldimagery_basemap()
+        benchcrs = QgsCoordinateReferenceSystem()
+        benchcrs.createFromProj4("+proj=lcc +lat_1=33.0 +lat_2=60.0 +lat_0=40.0 +lon_0=-97.0 +x_0=-1140000.0 +y_0=456000.0 +datum=WGS84 +no_defs")
+        benchcrs.saveAsUserCrs("N.E. projection")
 #        for layer in QgsProject.instance().mapLayers().values():
 #            print ("IT IS AT LAYER ",layer)
 ##            layer.setCrs(QgsCoordinateReferenceSystem('EPSG:4979'))
