@@ -21,6 +21,7 @@ def classFactory(iface):
     iface.mainWindow().setWindowTitle(new_title)
     
     for layer in QgsProject.instance().mapLayers().values():
+        print ("IT IS AT LAYER ",layer)
         layer.setCrs(QgsCoordinateReferenceSystem('EPSG:4979'))
 
     
