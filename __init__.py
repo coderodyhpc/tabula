@@ -1,3 +1,5 @@
+from qgis.core import QgsProject, QgsCoordinateReferenceSystem
+
 def classFactory(iface):
     """Load QGISPlugin class.
     Parameters
@@ -17,6 +19,12 @@ def classFactory(iface):
     title = iface.mainWindow().windowTitle()
     new_title = title.replace('QGIS', 'TABULA')
     iface.mainWindow().setWindowTitle(new_title)
+    
+    for layer in QgsProject.instance().mapLayers().values():
+        layer.setCrs(QgsCoordinateReferenceSystem('EPSG:4979'))
+
+    
+    
 #    iface.mainWindow().removeToolBar(toolbar)
     vector_menu = iface.vectorMenu()
 #    raster_menu = iface.rasterMenu()
