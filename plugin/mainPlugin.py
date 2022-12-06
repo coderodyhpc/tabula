@@ -33,7 +33,7 @@ class TabulaDock(QDockWidget):
         for layer in QgsProject.instance().mapLayers().values():
             print ("IT IS AT LAYER ",layer)
             self.bench_CRS = "+proj=lcc +lat_1=33.0 +lat_2=60.0 +lat_0=40.0 +lon_0=-97.0 +datum=WGS84 +no_defs" 
-            layer.setCrs(QgsCoordinateReferenceSystem(self.bench_CRS)
+            layer.setCrs(QgsCoordinateReferenceSystem(self.bench_CRS))
 #        crs.createFromProj4("+proj=lcc +lat_1=33.0 +lat_2=60.0 +lat_0=40.0 +lon_0=-97.0 +x_0=-1140000.0 +y_0=456000.0 +datum=WGS84 +no_defs")
     
     def add_stamen_basemap(self):
