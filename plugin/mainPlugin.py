@@ -25,10 +25,10 @@ class TabulaDock(QDockWidget):
         self.tabs = tabs
 #        self.add_stamen_basemap()
         self.worldimagery_basemap()
-#        for layer in QgsProject.instance().mapLayers().values():
-#            print ("IT IS AT LAYER ",layer)
+        for layer in QgsProject.instance().mapLayers().values():
+            print ("IT IS AT LAYER ",layer)
 ##            layer.setCrs(QgsCoordinateReferenceSystem('EPSG:4979'))
-#            layer.setCrs(QgsCoordinateReferenceSystem('ESRI:102004'))
+            layer.setCrs(QgsCoordinateReferenceSystem('ESRI:102004'))
 ##        self.add_naip_basemap()
         
     def add_stamen_basemap(self):
