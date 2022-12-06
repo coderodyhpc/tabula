@@ -23,12 +23,13 @@ class TabulaDock(QDockWidget):
 #        tabs.addTab(WhiteScroll(CMAQHomeTab()), 'CMAQ')
         self.setWidget(tabs)
         self.tabs = tabs
-        self.add_stamen_basemap()
-        for layer in QgsProject.instance().mapLayers().values():
-            print ("IT IS AT LAYER ",layer)
-#            layer.setCrs(QgsCoordinateReferenceSystem('EPSG:4979'))
-            layer.setCrs(QgsCoordinateReferenceSystem('ESRI:102004'))
-#        self.add_naip_basemap()
+#        self.add_stamen_basemap()
+        self.worldimagery_basemap()
+#        for layer in QgsProject.instance().mapLayers().values():
+#            print ("IT IS AT LAYER ",layer)
+##            layer.setCrs(QgsCoordinateReferenceSystem('EPSG:4979'))
+#            layer.setCrs(QgsCoordinateReferenceSystem('ESRI:102004'))
+##        self.add_naip_basemap()
         
     def add_stamen_basemap(self):
         print ("Adding Stamen")
@@ -77,7 +78,24 @@ class TabulaDock(QDockWidget):
         setWGS84()
 #    # Again with a delay, which is a work-around as sometimes QGIS does not apply the CRS change above.
         Timer(0.5, setWGS84).start()    
-        
+
+    def worldimagery_basemap() -> None:
+        url = 'type=xyz&zmin=0&zmax=17&url=https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg'
+        attribution = 'World Imagery'
+        attribution_url = 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
+        registry = QgsProject.instance() # type: QgsProject
+        root = registry.layerTreeRoot() # type: QgsLayerTree
+
+        tree_layers = filter(QgsLayerTree.isLayer, root.children())
+        if any(tree_layer.layer().source() == url for tree_layer in tree_layers):
+            return
+        layer = QgsRasterLayer(url, 'Terrain Background', 'wms')
+        layer.setAttribution(attribution)
+        layer.setAttributionUrl(attribution_url)
+        registry.addMapLayer(layer, False)
+        root.addLayer(layer)    
+    
+    
 #__ Initialization of the graphic environment ___#
 class QGISPlugin():
     def __init__(self, iface: QgisInterface) -> None:
