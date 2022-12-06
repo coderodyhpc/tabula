@@ -79,7 +79,7 @@ class TabulaDock(QDockWidget):
 #    # Again with a delay, which is a work-around as sometimes QGIS does not apply the CRS change above.
         Timer(0.5, setWGS84).start()    
 
-    def worldimagery_basemap() -> None:
+    def worldimagery_basemap(self) -> None:
         url = 'type=xyz&zmin=0&zmax=17&url=https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg'
         attribution = 'World Imagery'
         attribution_url = 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
