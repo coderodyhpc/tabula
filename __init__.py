@@ -27,8 +27,8 @@ def classFactory(iface):
     parent = toolbar.parentWidget()
     parent.removeToolBar(toolbar)
 
-    self.stilus.setSyleSheet = ("background-color: black; color: orange;")
-    iface.mainWindow().statusBar().styleSheet(self.stilus)  
+    stilus.setSyleSheet = ("background-color: black; color: orange;")
+    iface.mainWindow().statusBar().styleSheet(stilus)  
     
 #    vector_menu = iface.vectorMenu()
 #    raster_menu = iface.rasterMenu()
