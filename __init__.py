@@ -30,8 +30,8 @@ def classFactory(iface):
 #    stilus = iface.mainWindow().statusBar().styleSheet()  
 #    print (stilus)
 #    stilus.setStyleSheet = ("background-color: black; color: orange;")
-    set.setstyleSheet("background-color: black;")
-    iface.mainWindow().statusBar().styleSheet()
+#    set.setstyleSheet("background-color: black;")
+#    iface.mainWindow().statusBar().styleSheet()
 
     
 #    vector_menu = iface.vectorMenu()
