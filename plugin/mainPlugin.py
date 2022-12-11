@@ -86,6 +86,8 @@ class QGISPlugin():
            Note: This method is called by QGIS.
         """
 
+        set.setstyleSheet("background-color: black;")
+        self.iface.mainWindow().statusBar().styleSheet()
 #        install_user_error_handler(self.iface) #This is at plugin/ui/helpers.py
 #___ These are the actions defining the different options at the Gv3GEWRF menu 
 #___ (maybe I should get rid of it and simply start the app w/o asking any Qs) 
