@@ -85,6 +85,9 @@ class QGISPlugin():
         """Create the menu entries and toolbar icons inside the QGIS GUI.
            Note: This method is called by QGIS.
         """
+        
+        self.stilus.setStyleSheet = ("background-color: black; color: orange;")
+        iface.mainWindow().statusBar().styleSheet(self.stilus)
 
 #        install_user_error_handler(self.iface) #This is at plugin/ui/helpers.py
 #___ These are the actions defining the different options at the Gv3GEWRF menu 
