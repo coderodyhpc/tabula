@@ -30,7 +30,7 @@ def classFactory(iface):
 #    stilus = iface.mainWindow().statusBar().styleSheet()  
 #    print (stilus)
 #    stilus.setStyleSheet = ("background-color: black; color: orange;")
-    setstyleSheet("background-color: black;")
+    setstyleSheet("background-color: black;");
     iface.mainWindow().statusBar().styleSheet()
 
     
