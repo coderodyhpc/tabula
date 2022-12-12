@@ -36,9 +36,12 @@ def classFactory(iface):
     command3 = 'EC2_ZONE=$(ec2metadata --availability-zone)'
     os.system(command1)
     os.system(command2)
+    temp = subprocess.Popen([ec2metadata, '--instance-id', server], stdout = subprocess.PIPE)
+#    temp = subprocess.Popen([ec2metadata, '--instance-id'], stdout = subprocess.PIPE)
+    print ("TEMP ",temp)
 #    os.system(command3)
-    print ('EC2_INSTANCE_ID ',EC2_INSTANCE_ID)
-    print ('EC2_INSTANCE_TYPE ',EC2_INSTANCE_TYPE)
+#    print ('EC2_INSTANCE_ID ',EC2_INSTANCE_ID)
+#    print ('EC2_INSTANCE_TYPE ',EC2_INSTANCE_TYPE)
 #    print ('EC2_ZONE ',EC2_ZONE)
     
     lscpu_nomen = ((subprocess.check_output("lscpu", shell=True).strip()).decode())
