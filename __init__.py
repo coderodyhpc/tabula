@@ -1,3 +1,4 @@
+import subprocess
 from PyQt5.QtWidgets import QToolBar
 
 def classFactory(iface):
@@ -27,8 +28,19 @@ def classFactory(iface):
     parent = toolbar.parentWidget()
     parent.removeToolBar(toolbar)
 
-    stilus.setStyleSheet = ("background-color: black; color: orange;")
-    iface.mainWindow().statusBar().styleSheet(stilus)  
+    lscpu_nomen = ((subprocess.check_output("lscpu", shell=True).strip()).decode())
+    for item in lscpu_nomen.split("\n"):
+        if "Model name" in item:
+        modeln_1 = item.strip()
+    modeln_2 = modeln_1.replace("Model name:","")    
+    cpu_nomen = modeln_2.replace(" ","")    
+    cpu_NM = "CPU: "+cpu_nomen
+#    iface.mainWindow().statusBar().showMessage(texto)
+    self.odyimum = QPushButton(cpu_NM) 
+    self.odyimum.setStyleSheet = ("background-color: black; color: orange;")        
+    self.odyimum.setFont(QFont('Verdana', 14))
+#    stilus.setStyleSheet = ("background-color: black; color: orange;")
+    iface.mainWindow().statusBar().addWidget(self.odyimum)  
     
 #    vector_menu = iface.vectorMenu()
 #    raster_menu = iface.rasterMenu()
