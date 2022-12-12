@@ -51,7 +51,8 @@ def classFactory(iface):
     odyimum.setFont(QFont('Verdana', 10))
 #    stilus.setStyleSheet = ("background-color: black; color: orange;")
     iface.mainWindow().statusBar().addWidget(odyimum)  
-    iface.mainWindow().statusBar().setFont(QFont('Verdana', 20))  
+#    iface.mainWindow().statusBar().setFont(QFont('Verdana', 20))  
+    iface.mainWindow().statusBar().setFont(self, QFont('Verdana', 20))  
     
 #    vector_menu = iface.vectorMenu()
 #    raster_menu = iface.rasterMenu()
