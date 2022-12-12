@@ -1,6 +1,7 @@
 import subprocess
 from PyQt5.QtWidgets import QToolBar, QPushButton
 from PyQt5.QtGui import QFont
+from PyQt5.QtCore import QString
 
 def classFactory(iface):
     """Load QGISPlugin class.
@@ -38,7 +39,10 @@ def classFactory(iface):
     cpu_NM = "CPU: "+cpu_nomen
 #    iface.mainWindow().statusBar().showMessage(texto)
     odyimum = QPushButton(cpu_NM) 
-    odyimum.setStyleSheet = ('QString', background-color: black; color: orange;)        
+#    odyimum.setStyleSheet = ('QString', background-color: black; color: orange;)        
+#    stultus = "background-color: black; color: orange;"
+#    odyimum.setStyleSheet = (const QString &stultus)        
+    odyimum.setStyleSheet = (QString ('background-color: black; color: orange;'))        
     odyimum.setFont(QFont('Verdana', 14))
 #    stilus.setStyleSheet = ("background-color: black; color: orange;")
     iface.mainWindow().statusBar().addWidget(odyimum)  
