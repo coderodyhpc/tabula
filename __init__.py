@@ -37,8 +37,12 @@ def classFactory(iface):
     os.system(command1)
     os.system(command2)
     temp = subprocess.Popen([ec2metadata, '--instance-id', server], stdout = subprocess.PIPE)
+    
+    cmd = ['ec2metadata', '--instance-id']
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    o, e = proc.communicate()
 #    temp = subprocess.Popen([ec2metadata, '--instance-id'], stdout = subprocess.PIPE)
-    print ("TEMP ",temp)
+    print ("TEMP ",o)
 #    os.system(command3)
 #    print ('EC2_INSTANCE_ID ',EC2_INSTANCE_ID)
 #    print ('EC2_INSTANCE_TYPE ',EC2_INSTANCE_TYPE)
