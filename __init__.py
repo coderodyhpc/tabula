@@ -1,5 +1,5 @@
 import subprocess
-from PyQt5.QtWidgets import QToolBar
+from PyQt5.QtWidgets import QToolBar, QPushButton
 
 def classFactory(iface):
     """Load QGISPlugin class.
