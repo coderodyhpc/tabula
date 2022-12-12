@@ -45,9 +45,8 @@ def classFactory(iface):
 #    odyimum.setStyleSheet = (const QString &stultus)        
 #    odyimum.setStyleSheet = (QtCore.QString ('background-color: black; color: orange;'))
 #    odyimum.setStyleSheet(".QWidget {color: blue; background-color: yellow;}")
-    odyimum.setStyleSheet(".QPushButton {color: blue; background-color: yellow;}")
-
-    odyimum.setFont(QFont('Verdana', 14))
+    odyimum.setStyleSheet(".QPushButton {color:#F97902; background-color: black;}")
+    odyimum.setFont(QFont('Verdana', 10))
 #    stilus.setStyleSheet = ("background-color: black; color: orange;")
     iface.mainWindow().statusBar().addWidget(odyimum)  
     
