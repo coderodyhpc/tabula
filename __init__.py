@@ -44,15 +44,15 @@ def classFactory(iface):
     EC2_INSTANCE_ID = proc1.communicate()[0]
 #    EC2_INSTANCE = EC2_INSTANCE_ID.replace("b'","")
 #    command2 = ['ec2metadata', '--instance-type']
-    proc2 = subprocess.Popen(command2, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    EC2_INSTANCE_TYPE, error2 = proc2.communicate()
-    command3 = ['ec2metadata', '--availability-zone']
-    proc3 = subprocess.Popen(command3, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    EC2_ZONE, error3 = proc3.communicate()
+#    proc2 = subprocess.Popen(command2, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+#    EC2_INSTANCE_TYPE, error2 = proc2.communicate()
+#    command3 = ['ec2metadata', '--availability-zone']
+#    proc3 = subprocess.Popen(command3, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+#    EC2_ZONE, error3 = proc3.communicate()
 #    temp = subprocess.Popen([ec2metadata, '--instance-id'], stdout = subprocess.PIPE)
     print ("EC2_INSTANCE_ID ",EC2_INSTANCE_ID)
-    print ("EC2_INSTANCE_TYPE ",EC2_INSTANCE_TYPE)
-    print ("EC2_ZONE ",EC2_INSTANCE_ID)
+#    print ("EC2_INSTANCE_TYPE ",EC2_INSTANCE_TYPE)
+#    print ("EC2_ZONE ",EC2_INSTANCE_ID)
 #    os.system(command3)
 #    print ('EC2_INSTANCE_ID ',EC2_INSTANCE_ID)
 #    print ('EC2_INSTANCE_TYPE ',EC2_INSTANCE_TYPE)
