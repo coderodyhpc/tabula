@@ -31,7 +31,7 @@ def classFactory(iface):
     lscpu_nomen = ((subprocess.check_output("lscpu", shell=True).strip()).decode())
     for item in lscpu_nomen.split("\n"):
         if "Model name" in item:
-        modeln_1 = item.strip()
+            modeln_1 = item.strip()
     modeln_2 = modeln_1.replace("Model name:","")    
     cpu_nomen = modeln_2.replace(" ","")    
     cpu_NM = "CPU: "+cpu_nomen
