@@ -1,4 +1,4 @@
-import subprocess
+import subprocess, os
 from PyQt5.QtWidgets import QToolBar, QPushButton
 from PyQt5.QtGui import QFont
 #from PyQt5.QtCore import QString
@@ -31,6 +31,16 @@ def classFactory(iface):
     parent = toolbar.parentWidget()
     parent.removeToolBar(toolbar)
 
+    command1 = 'EC2_INSTANCE_ID=$(ec2metadata --instance-id)'
+    command2 = 'EC2_INSTANCE_TYPE=$(ec2metadata --instance-type)'
+    command3 = 'EC2_ZONE=$(ec2metadata --availability-zone:)'
+    os.system(command1)
+    os.system(command2)
+    os.system(command3)
+    print ('EC2_INSTANCE_ID ',EC2_INSTANCE_ID)
+    print ('EC2_INSTANCE_TYPE ',EC2_INSTANCE_TYPE)
+    print ('EC2_ZONE ',EC2_ZONE)
+    
     lscpu_nomen = ((subprocess.check_output("lscpu", shell=True).strip()).decode())
     for item in lscpu_nomen.split("\n"):
         if "Model name" in item:
