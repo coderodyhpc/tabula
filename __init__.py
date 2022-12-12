@@ -36,11 +36,11 @@ def classFactory(iface):
     cpu_nomen = modeln_2.replace(" ","")    
     cpu_NM = "CPU: "+cpu_nomen
 #    iface.mainWindow().statusBar().showMessage(texto)
-    self.odyimum = QPushButton(cpu_NM) 
-    self.odyimum.setStyleSheet = ("background-color: black; color: orange;")        
-    self.odyimum.setFont(QFont('Verdana', 14))
+    odyimum = QPushButton(cpu_NM) 
+    odyimum.setStyleSheet = ("background-color: black; color: orange;")        
+    odyimum.setFont(QFont('Verdana', 14))
 #    stilus.setStyleSheet = ("background-color: black; color: orange;")
-    iface.mainWindow().statusBar().addWidget(self.odyimum)  
+    iface.mainWindow().statusBar().addWidget(odyimum)  
     
 #    vector_menu = iface.vectorMenu()
 #    raster_menu = iface.rasterMenu()
