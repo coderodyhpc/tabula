@@ -40,7 +40,8 @@ def classFactory(iface):
     
     command1 = ['ec2metadata', '--instance-id']
     proc1 = subprocess.Popen(command1, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    EC2_INSTANCE_ID, error1 = proc1.communicate()[0]
+#    EC2_INSTANCE_ID, error1 = proc1.communicate()[0]
+    EC2_INSTANCE_ID = proc1.communicate()[0]
 #    EC2_INSTANCE = EC2_INSTANCE_ID.replace("b'","")
 #    command2 = ['ec2metadata', '--instance-type']
     proc2 = subprocess.Popen(command2, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
