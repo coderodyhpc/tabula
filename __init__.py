@@ -1,7 +1,7 @@
 import subprocess
 from PyQt5.QtWidgets import QToolBar, QPushButton
 from PyQt5.QtGui import QFont
-from PyQt5.QtCore import QString
+#from PyQt5.QtCore import QString
 
 def classFactory(iface):
     """Load QGISPlugin class.
