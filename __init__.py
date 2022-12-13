@@ -47,8 +47,8 @@ def classFactory(iface):
             modeln_1 = item.strip()
     modeln_2 = modeln_1.replace("Model name:","")    
     cpu_nomen = modeln_2.replace(" ","")  
-    if ( cpu_nomen == "Neoverse-N1"):
-        cpu-nomen = "Graviton2"
+#    if ( cpu_nomen == "Neoverse-N1"):
+#        cpu-nomen = "Graviton2"
     cpu_NM = "CPU: "+cpu_nomen
     cpu_NM2 = "CPU: "+cpu_nomen+" ("+EC2_INSTANCE_TYPE+")"
 #    iface.mainWindow().statusBar().showMessage(texto)
