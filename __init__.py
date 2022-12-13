@@ -40,19 +40,16 @@ def classFactory(iface):
     
     command1 = ['ec2metadata', '--instance-id']
     proc1 = subprocess.Popen(command1, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-#    EC2_INSTANCE_ID, error1 = proc1.communicate()[0]
     EC2_INSTANCE_ID = proc1.communicate()[0].decode("utf-8")
-#    EC2_INSTANCE = EC2_INSTANCE_ID.replace("b'","")
-#    command2 = ['ec2metadata', '--instance-type']
-#    proc2 = subprocess.Popen(command2, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-#    EC2_INSTANCE_TYPE, error2 = proc2.communicate()
-#    command3 = ['ec2metadata', '--availability-zone']
-#    proc3 = subprocess.Popen(command3, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-#    EC2_ZONE, error3 = proc3.communicate()
-#    temp = subprocess.Popen([ec2metadata, '--instance-id'], stdout = subprocess.PIPE)
+    command2 = ['ec2metadata', '--instance-type']
+    proc2 = subprocess.Popen(command2, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    EC2_INSTANCE_TYPE = proc2.communicate()[0].decode("utf-8")
+    command3 = ['ec2metadata', '--availability-zone']
+    proc3 = subprocess.Popen(command3, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    EC2_ZONE = proc3.communicate()[0].decode("utf-8")
     print ("EC2_INSTANCE_ID ",EC2_INSTANCE_ID)
-#    print ("EC2_INSTANCE_TYPE ",EC2_INSTANCE_TYPE)
-#    print ("EC2_ZONE ",EC2_INSTANCE_ID)
+    print ("EC2_INSTANCE_TYPE ",EC2_INSTANCE_TYPE)
+    print ("EC2_ZONE ",EC2_INSTANCE_ID)
 #    os.system(command3)
 #    print ('EC2_INSTANCE_ID ',EC2_INSTANCE_ID)
 #    print ('EC2_INSTANCE_TYPE ',EC2_INSTANCE_TYPE)
@@ -64,7 +61,7 @@ def classFactory(iface):
             modeln_1 = item.strip()
     modeln_2 = modeln_1.replace("Model name:","")    
     cpu_nomen = modeln_2.replace(" ","")    
-    cpu_NM = "CPU: "+cpu_nomen
+    cpu_NM = "CPU: "+cpu_nomen+" "+EC2_INSTANCE_TYPE
 #    iface.mainWindow().statusBar().showMessage(texto)
     odyimum = QPushButton(cpu_NM) 
 #    odyimum.setStyleSheet = ('QString', background-color: black; color: orange;)        
@@ -79,7 +76,7 @@ def classFactory(iface):
 #    stilus.setStyleSheet = ("background-color: black; color: orange;")
     iface.mainWindow().statusBar().addWidget(odyimum)  
 #    iface.mainWindow().statusBar().setFont(QFont('Verdana', 20))  
-    iface.mainWindow().statusBar().setFont(self, QFont('Verdana', 20))  
+#    iface.mainWindow().statusBar().setFont(self, QFont('Verdana', 20))  
     
 #    vector_menu = iface.vectorMenu()
 #    raster_menu = iface.rasterMenu()
