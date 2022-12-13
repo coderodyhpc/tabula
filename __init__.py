@@ -31,6 +31,8 @@ def classFactory(iface):
     parent = toolbar.parentWidget()
     parent.removeToolBar(toolbar)
 
+    iface.mainWindow().statusBar().setFont(QFont('Verdana', 10))  
+    iface.mainWindow().statusBar().setStyleSheet("background-color: black; color: white;")  
     command1 = ['ec2metadata', '--instance-id']
     proc1 = subprocess.Popen(command1, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     EC2_INSTANCE_ID = proc1.communicate()[0].decode("utf-8")
@@ -51,10 +53,11 @@ def classFactory(iface):
         nomen2 = "Graviton2"
     else:    
         nomen2 = cpu-nomen
-    cpu_NM = "CPU: "+nomen2
-    cpu_NM2 = "CPU: "+nomen2+" ("+EC2_INSTANCE_TYPE+")"
+    cpu_NM = "CPU: "+nomen2+" "
+    cpu_NM2 = "("+EC2_INSTANCE_TYPE+")"
+    cpu_TOTAL = cpu_NM+cpu_NM2 
 #    iface.mainWindow().statusBar().showMessage(texto)
-    odyimum = QPushButton(cpu_NM2) 
+    odyimum = QPushButton(cpu_TOTAL) 
 #    odyimum.setStyleSheet = ('QString', background-color: black; color: orange;)        
 #    stultus = "background-color: black; color: orange;"
 #    odyimum.setStyleSheet = (const QString &stultus)        
@@ -63,12 +66,12 @@ def classFactory(iface):
 #    odyimum.setStyleSheet(".QPushButton {color:#F97902; background-color: black;}")
 #    odyimum.setStyleSheet(".QPushButton {color: black; background-color:#F97902;}")
     odyimum.setStyleSheet(".QPushButton {color: black; background-color:#FF9900;}")
-    odyimum.setFont(QFont('Verdana', 10))
+#    odyimum.setFont(QFont('Verdana', 10))
 #    stilus.setStyleSheet = ("background-color: black; color: orange;")
     iface.mainWindow().statusBar().addWidget(odyimum)  
-#    iface.mainWindow().statusBar().setFont(QFont('Verdana', 20))  
-    iface.mainWindow().statusBar().setFont(self, QFont('Verdana', 20))  
-    
+
+    iface.messageBar().pushMessage("Error", "I'm sorry Dave, I'm afraid I can't do that")
+
 #    vector_menu = iface.vectorMenu()
 #    raster_menu = iface.rasterMenu()
 #    mesh_menu = iface.meshMenu()
