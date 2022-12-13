@@ -1,5 +1,5 @@
 import subprocess, os
-from PyQt5.QtWidgets import QToolBar, QPushButton
+from PyQt5.QtWidgets import QToolBar, QPushButton, QLabel
 from PyQt5.QtGui import QFont
 #from PyQt5.QtCore import QString
 from PyQt5 import QtCore
@@ -49,7 +49,7 @@ def classFactory(iface):
     EC2_ZONE = proc3.communicate()[0].decode("utf-8")
     print ("EC2_INSTANCE_ID ",EC2_INSTANCE_ID)
     print ("EC2_INSTANCE_TYPE ",EC2_INSTANCE_TYPE)
-    print ("EC2_ZONE ",EC2_INSTANCE_ID)
+    print ("EC2_ZONE ",EC2_ZONE)
 #    os.system(command3)
 #    print ('EC2_INSTANCE_ID ',EC2_INSTANCE_ID)
 #    print ('EC2_INSTANCE_TYPE ',EC2_INSTANCE_TYPE)
