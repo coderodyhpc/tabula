@@ -47,12 +47,14 @@ def classFactory(iface):
             modeln_1 = item.strip()
     modeln_2 = modeln_1.replace("Model name:","")    
     cpu_nomen = modeln_2.replace(" ","")  
-#    if ( cpu_nomen == "Neoverse-N1"):
-#        cpu-nomen = "Graviton2"
-    cpu_NM = "CPU: "+cpu_nomen
-    cpu_NM2 = "CPU: "+cpu_nomen+" ("+EC2_INSTANCE_TYPE+")"
+    if cpu_nomen == 'Neoverse-N1':
+        cpu-nomen2 = "Graviton2"
+    else    
+        cpu-nomen2 = cpu-nomen
+    cpu_NM = "CPU: "+cpu_nomen2
+    cpu_NM2 = "CPU: "+cpu_nomen2+" ("+EC2_INSTANCE_TYPE+")"
 #    iface.mainWindow().statusBar().showMessage(texto)
-    odyimum = QPushButton(cpu_NM) 
+    odyimum = QPushButton(cpu_NM2) 
 #    odyimum.setStyleSheet = ('QString', background-color: black; color: orange;)        
 #    stultus = "background-color: black; color: orange;"
 #    odyimum.setStyleSheet = (const QString &stultus)        
