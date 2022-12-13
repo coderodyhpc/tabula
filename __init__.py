@@ -61,7 +61,9 @@ def classFactory(iface):
             modeln_1 = item.strip()
     modeln_2 = modeln_1.replace("Model name:","")    
     cpu_nomen = modeln_2.replace(" ","")    
-    cpu_NM = "CPU: "+cpu_nomen+" "+EC2_INSTANCE_TYPE
+#    cpu_NM = "CPU: "+cpu_nomen+" "+EC2_INSTANCE_TYPE
+    cpu_NM = "CPU: "+cpu_nomen
+    print ("cpu_NM ",cpu_NM)
 #    iface.mainWindow().statusBar().showMessage(texto)
 #    odyimum = QPushButton(cpu_NM) 
     odyimum = QLabel(cpu_NM) 
