@@ -32,7 +32,7 @@ def classFactory(iface):
     parent.removeToolBar(toolbar)
 
     iface.mainWindow().statusBar().setFont(QFont('Verdana', 10))  
-    iface.mainWindow().statusBar().setStyleSheet("background-color: black; color: white;")  
+    iface.mainWindow().statusBar().setStyleSheet("background-color:#4B555C; color: white;")  
     command1 = ['ec2metadata', '--instance-id']
     proc1 = subprocess.Popen(command1, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     EC2_INSTANCE_ID = proc1.communicate()[0].decode("utf-8")
@@ -54,7 +54,7 @@ def classFactory(iface):
     else:    
         nomen2 = cpu-nomen
     cpu_NM = "CPU: "+nomen2+"\n"
-    cpu_NM2 = "("+EC2_INSTANCE_TYPE+")"
+    cpu_NM2 = EC2_INSTANCE_TYPE
     cpu_TOTAL = cpu_NM+cpu_NM2 
 #    iface.mainWindow().statusBar().showMessage(texto)
     odyimum = QPushButton(cpu_TOTAL) 
@@ -69,8 +69,9 @@ def classFactory(iface):
 #    odyimum.setFont(QFont('Verdana', 10))
 #    stilus.setStyleSheet = ("background-color: black; color: orange;")
     iface.mainWindow().statusBar().addWidget(odyimum)  
+    iface.mainWindow().statusBar().showMessage("I'm sorry Dave, I'm afraid I can't do that")
 
-    iface.messageBar().pushMessage("Error", "I'm sorry Dave, I'm afraid I can't do that")
+#    iface.messageBar().pushMessage("Error", "I'm sorry Dave, I'm afraid I can't do that")
 
 #    vector_menu = iface.vectorMenu()
 #    raster_menu = iface.rasterMenu()
