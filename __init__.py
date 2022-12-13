@@ -63,7 +63,8 @@ def classFactory(iface):
     cpu_nomen = modeln_2.replace(" ","")    
     cpu_NM = "CPU: "+cpu_nomen+" "+EC2_INSTANCE_TYPE
 #    iface.mainWindow().statusBar().showMessage(texto)
-    odyimum = QPushButton(cpu_NM) 
+#    odyimum = QPushButton(cpu_NM) 
+    odyimum = QLabel(cpu_NM) 
 #    odyimum.setStyleSheet = ('QString', background-color: black; color: orange;)        
 #    stultus = "background-color: black; color: orange;"
 #    odyimum.setStyleSheet = (const QString &stultus)        
@@ -71,7 +72,7 @@ def classFactory(iface):
 #    odyimum.setStyleSheet(".QWidget {color: blue; background-color: yellow;}")
 #    odyimum.setStyleSheet(".QPushButton {color:#F97902; background-color: black;}")
 #    odyimum.setStyleSheet(".QPushButton {color: black; background-color:#F97902;}")
-    odyimum.setStyleSheet(".QPushButton {color: black; background-color:#FF9900;}")
+    odyimum.setStyleSheet(".QLabel {color: black; background-color:#FF9900;}")
     odyimum.setFont(QFont('Verdana', 10))
 #    stilus.setStyleSheet = ("background-color: black; color: orange;")
     iface.mainWindow().statusBar().addWidget(odyimum)  
