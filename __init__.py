@@ -31,6 +31,16 @@ def classFactory(iface):
     parent = toolbar.parentWidget()
     parent.removeToolBar(toolbar)
 
+    command1 = ['ec2metadata', '--instance-id']
+    proc1 = subprocess.Popen(command1, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    EC2_INSTANCE_ID = proc1.communicate()[0].decode("utf-8")
+    command2 = ['ec2metadata', '--instance-type']
+    proc2 = subprocess.Popen(command2, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    EC2_INSTANCE_TYPE = proc2.communicate()[0].decode("utf-8")
+    command3 = ['ec2metadata', '--availability-zone']
+    proc3 = subprocess.Popen(command3, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    EC2_ZONE = proc3.communicate()[0].decode("utf-8")
+    
     lscpu_nomen = ((subprocess.check_output("lscpu", shell=True).strip()).decode())
     for item in lscpu_nomen.split("\n"):
         if "Model name" in item:
@@ -38,6 +48,7 @@ def classFactory(iface):
     modeln_2 = modeln_1.replace("Model name:","")    
     cpu_nomen = modeln_2.replace(" ","")    
     cpu_NM = "CPU: "+cpu_nomen
+    cpu_NM2 = "CPU: "+cpu_nomen+" ("+EC2_INSTANCE_TYPE+")"
 #    iface.mainWindow().statusBar().showMessage(texto)
     odyimum = QPushButton(cpu_NM) 
 #    odyimum.setStyleSheet = ('QString', background-color: black; color: orange;)        
