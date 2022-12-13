@@ -53,7 +53,7 @@ def classFactory(iface):
         nomen2 = "Graviton2"
     else:    
         nomen2 = cpu-nomen
-    cpu_NM = "CPU: "+nomen2+" "
+    cpu_NM = "CPU: "+nomen2+"\n"
     cpu_NM2 = "("+EC2_INSTANCE_TYPE+")"
     cpu_TOTAL = cpu_NM+cpu_NM2 
 #    iface.mainWindow().statusBar().showMessage(texto)
