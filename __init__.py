@@ -49,7 +49,7 @@ def classFactory(iface):
     cpu_nomen = modeln_2.replace(" ","")  
     if cpu_nomen == 'Neoverse-N1':
         cpu-nomen2 = "Graviton2"
-    else    
+    else:    
         cpu-nomen2 = cpu-nomen
     cpu_NM = "CPU: "+cpu_nomen2
     cpu_NM2 = "CPU: "+cpu_nomen2+" ("+EC2_INSTANCE_TYPE+")"
