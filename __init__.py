@@ -66,10 +66,16 @@ def classFactory(iface):
 #    odyimum.setStyleSheet(".QPushButton {color:#F97902; background-color: black;}")
 #    odyimum.setStyleSheet(".QPushButton {color: black; background-color:#F97902;}")
     odyimum.setStyleSheet(".QPushButton {color: black; background-color:#FF9900;}")
-#    odyimum.setFont(QFont('Verdana', 10))
+    odyimum.setFont(QFont('Verdana', 10))
 #    stilus.setStyleSheet = ("background-color: black; color: orange;")
     iface.mainWindow().statusBar().addWidget(odyimum)  
-    iface.mainWindow().statusBar().showMessage("I'm sorry Dave, I'm afraid I can't do that")
+
+    nuntiumimum = QPushButton("Info about variables") 
+    nuntiumimum.setStyleSheet(".QPushButton {color: black; background-color:#99FF99;}")
+    nuntiumimum.setFont(QFont('Verdana', 10))
+    iface.mainWindow().statusBar().addWidget(nuntiumimum)  
+    
+#    iface.mainWindow().statusBar().showMessage("I'm sorry Dave, I'm afraid I can't do that")
 
 #    iface.messageBar().pushMessage("Error", "I'm sorry Dave, I'm afraid I can't do that")
 
