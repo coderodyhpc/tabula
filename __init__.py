@@ -68,8 +68,10 @@ def classFactory(iface):
 #    cpu_NM2.replace("\n","")
     cpu_NM3 = EC2_ZONE
     cpu_TOTAL = cpu_NM+cpu_NM2 
-    odyimum = QPushButton(cpu_TOTAL) 
-    odyimum.setStyleSheet(".QPushButton {color: black; background-color:#FF9900;}")
+    odyimum = QWidget()
+    stultus = QLabel (cpu_TOTAL)
+    odiyum.addWidget(stultus)
+    odyimum.setStyleSheet(".QWidget {color: black; background-color:#FF9900;}")
     odyimum.setFont(QFont('Verdana', 10))
     iface.mainWindow().statusBar().addWidget(odyimum)    
 
