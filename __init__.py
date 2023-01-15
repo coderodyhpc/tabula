@@ -46,7 +46,7 @@ def classFactory(iface):
     proc3 = subprocess.Popen(command3, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     EC2_ZONEx = proc3.communicate()[0].decode("utf-8")
     EC2_ZONE = EC2_ZONEx.strip() 
-    print ("THESE ARE THE EC2 VARIABLES ",EC2_INSTANCE_ID,EC2_INSTANCE_TYPE,EC2_INSTANCE_ZONE)
+    print ("THESE ARE THE EC2 VARIABLES ",EC2_INSTANCE_ID,EC2_INSTANCE_TYPE,EC2_ZONE)
     
     lscpu_nomen = ((subprocess.check_output("lscpu", shell=True).strip()).decode())
     for item in lscpu_nomen.split("\n"):
