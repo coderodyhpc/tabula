@@ -50,7 +50,7 @@ def classFactory(iface):
     EC2_ZONEx = proc3.communicate()[0].decode("utf-8")
     EC2_ZONE = EC2_ZONEx.strip() 
     print ("THESE ARE THE EC2 VARIABLES ",EC2_INSTANCE_ID,EC2_INSTANCE_TYPE,EC2_ZONE)
-    
+    EC2_label = 'Region: ' + EC2_ZONE + 'Instance ID ' + EC2_INSTANCE_ID
     lscpu_nomen = ((subprocess.check_output("lscpu", shell=True).strip()).decode())
     for item in lscpu_nomen.split("\n"):
         if "Model name" in item:
@@ -70,7 +70,9 @@ def classFactory(iface):
     cpu_TOTAL = cpu_NM+cpu_NM2 
     odyimum = QWidget()
     stultus = QLabel (cpu_TOTAL)
+    stultus2 = QLabel (EC2_label)
     odiyum.addWidget(stultus)
+    odiyum.addWidget(stultus2)
     odyimum.setStyleSheet(".QWidget {color: black; background-color:#FF9900;}")
     odyimum.setFont(QFont('Verdana', 10))
     iface.mainWindow().statusBar().addWidget(odyimum)    
