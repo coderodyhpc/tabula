@@ -1,3 +1,4 @@
+import subprocess
 def classFactory(iface):
     """Load QGISPlugin class.
     Parameters
