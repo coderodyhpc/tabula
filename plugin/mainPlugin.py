@@ -80,7 +80,12 @@ class QGISPlugin():
         self.iface = iface
         self.actions = []  # type: List[QAction]
         self.dock_widget = None # type: WrfDock
-        
+
+        odyQGIS = QPushButton("From QGISPlugin ") 
+        odyQGIS.setStyleSheet(".QPushButton {color: black; background-color:#009900;}")
+        odyQGIS.setFont(QFont('Verdana', 10))
+        iface.mainWindow().statusBar().addWidget(odyQGIS)    
+    
     def initGui(self) -> None:
         """Create the menu entries and toolbar icons inside the QGIS GUI.
            Note: This method is called by QGIS.
