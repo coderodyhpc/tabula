@@ -83,7 +83,7 @@ class QGISPlugin():
 
         odyQGIS = QPushButton("From QGISPlugin ") 
         odyQGIS.setStyleSheet(".QPushButton {color: black; background-color:#009900;}")
-        odyQGIS.setFont(QFont('Verdana', 10))
+#        odyQGIS.setFont(QFont('Verdana', 10))
         iface.mainWindow().statusBar().addWidget(odyQGIS)    
     
     def initGui(self) -> None:
