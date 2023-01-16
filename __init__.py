@@ -76,6 +76,11 @@ def classFactory(iface):
     odyimum.setFont(QFont('Verdana', 10))
     iface.mainWindow().statusBar().addWidget(odyimum)    
 
+    odyimum2 = QPushButton(cpu_TOTAL) 
+    odyimum2.setStyleSheet(".QPushButton {color: black; background-color:#009900;}")
+    odyimum2.setFont(QFont('Verdana', 10))
+    iface.mainWindow().statusBar().addWidget(odyimum2)    
+    
     return QGISPlugin(iface)
 
 def dummy_menu():
