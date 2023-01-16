@@ -69,13 +69,13 @@ def classFactory(iface):
     cpu_NM3 = EC2_ZONE
     cpu_TOTAL = cpu_NM+cpu_NM2 
     odyimum = QWidget()
-    layout = QVBoxLayout
+    self.layout = QVBoxLayout
     stultus = QLabel (cpu_TOTAL)
     stultus2 = QLabel (EC2_label)
-    layout.addWidget(stultus)
-    layout.addWidget(stultus2)
-    odyimum.addLayout(layout)
-    odyimum.setStyleSheet(".QWidget {color: black; background-color:#FF9900;}")
+    self.layout.addWidget(stultus)
+    self.layout.addWidget(stultus2)
+    odyimum.addLayout(self.layout)
+#    odyimum.setStyleSheet(".QWidget {color: black; background-color:#FF9900;}")
     odyimum.setFont(QFont('Verdana', 10))
     iface.mainWindow().statusBar().addWidget(odyimum)    
 
