@@ -1,6 +1,6 @@
 import subprocess
 from PyQt5.QtGui import QIcon, QFont
-from PyQt5.QtWidgets import QToolBar, QPushButton, QLabel, QWidget
+from PyQt5.QtWidgets import QToolBar, QPushButton, QLabel, QWidget, QVBoxLayout
 
 def classFactory(iface):
     """Load QGISPlugin class.
@@ -69,10 +69,12 @@ def classFactory(iface):
     cpu_NM3 = EC2_ZONE
     cpu_TOTAL = cpu_NM+cpu_NM2 
     odyimum = QWidget()
+    layout = QVBoxLayout
     stultus = QLabel (cpu_TOTAL)
     stultus2 = QLabel (EC2_label)
-    odiyum.addWidget(stultus)
-    odiyum.addWidget(stultus2)
+    layout.addWidget(stultus)
+    layout.addWidget(stultus2)
+    odyimum.addLayout(layout)
     odyimum.setStyleSheet(".QWidget {color: black; background-color:#FF9900;}")
     odyimum.setFont(QFont('Verdana', 10))
     iface.mainWindow().statusBar().addWidget(odyimum)    
