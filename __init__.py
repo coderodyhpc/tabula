@@ -70,7 +70,7 @@ def classFactory(iface):
     cpu_TOTAL = cpu_NM+cpu_NM2 
 #    odyimum = QPushButton(cpu_TOTAL) 
 
-    EC2_TOTAL = "Instance type" + EC2_INSTANCE_TYPE + ".             CPU: " + nomen2 + "\n" + "Region: " + EC2_ZONE + ".   Instance ID: " + EC2_INSTANCE_ID
+    EC2_TOTAL = "Instance type: " + EC2_INSTANCE_TYPE + ".               CPU: " + nomen2 + "\n" + "Region: " + EC2_ZONE + ". Instance ID: " + EC2_INSTANCE_ID
     odyimum = QPushButton(EC2_TOTAL) 
     odyimum.setStyleSheet(".QPushButton {color: black; background-color:#FF9900;}")
     odyimum.setFont(QFont('Verdana', 10))
