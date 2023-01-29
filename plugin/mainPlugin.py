@@ -20,11 +20,9 @@ class TabulaDock(QDockWidget):
         tabs.addTab(self.tab1,"TAB 1")
         self.tab2 = QWidget()
         tabs.addTab(self.tab2,"TAB 2")
-#        tabs.addTab(WhiteScroll(CMAQHomeTab()), 'CMAQ')
         self.setWidget(tabs)
         self.tabs = tabs
         self.add_stamen_basemap()
-#        self.add_naip_basemap()
         
     def add_stamen_basemap(self):
         print ("Adding Stamen")
@@ -50,30 +48,6 @@ class TabulaDock(QDockWidget):
     # Again with a delay, which is a work-around as sometimes QGIS does not apply the CRS change above.
         Timer(0.5, setWGS84).start()
 
-    def add_naip_basemap(self):
-        url = 'https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/0/0/0'
-        print ('AT NAIP ',url) 
-##    attribution = 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL'
-##    attribution_url = 'http://maps.stamen.com'
-        registry = QgsProject.instance() # type: QgsProject
-        root = registry.layerTreeRoot() # type: QgsLayerTree
-
-        tree_layers = filter(QgsLayerTree.isLayer, root.children())
-        if any(tree_layer.layer().source() == url for tree_layer in tree_layers):
-            return
-        layer = QgsRasterLayer(url, 'NAIP', 'wms')
-##    layer.setAttribution(attribution)
-##    layer.setAttributionUrl(attribution_url)
-        registry.addMapLayer(layer, False)
-    #    root.addLayer(layer)
-
-    # Reset the Project CRS to WGS84 otherwise it will be set to the stamen layer CRS
-        def setWGS84():
-            registry.setCrs((QgsCoordinateReferenceSystem.fromProj4("+proj=longlat +datum=WGS84 +no_defs")))
-        setWGS84()
-#    # Again with a delay, which is a work-around as sometimes QGIS does not apply the CRS change above.
-        Timer(0.5, setWGS84).start()    
-        
 #__ Initialization of the graphic environment ___#
 class QGISPlugin():
     def __init__(self, iface: QgisInterface) -> None:
@@ -85,10 +59,6 @@ class QGISPlugin():
         """Create the menu entries and toolbar icons inside the QGIS GUI.
            Note: This method is called by QGIS.
         """
-
-#        install_user_error_handler(self.iface) #This is at plugin/ui/helpers.py
-#___ These are the actions defining the different options at the Gv3GEWRF menu 
-#___ (maybe I should get rid of it and simply start the app w/o asking any Qs) 
         self.menu = '&' + 'TABULA'
         self.add_action(icon_path='/home/ubuntu/.local/share/QGIS/QGIS3/profiles/default/python/plugins/TABULA/logo16B.png',
                         text="TABULA", callback=self.show_dock, add_to_toolbar=True,
@@ -111,14 +81,8 @@ class QGISPlugin():
     def show_dock(self) -> None:
         if not self.dock_widget:
             self.dock_widget = TabulaDock(self.iface, self.dock_widget)
-#! What happens if I change Right with Left
         self.iface.addDockWidget(
             Qt.RightDockWidgetArea, self.dock_widget)
-#        add_default_basemap()
-#        add_naip_basemap()
-#        self.dock_widget.hasFocus.connect(self.on_dock_focus)
-#        self.iface.addWidget(
-#            self.dock_widget)
 
     def add_action(self, icon_path: str, text: str, callback: Callable,
                    enabled_flag: bool=True, add_to_menu: bool=True,
