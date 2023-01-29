@@ -27,6 +27,7 @@ class TabulaDock(QDockWidget):
         crs = QgsCoordinateReferenceSystem.fromProj4(novus_CRS)
         qgsProject = QgsProject.instance() 
         qgsProject.setCrs(crs)
+        print ("CRS ",crs,qgsProject)
         
     def add_stamen_basemap(self):
         print ("Adding Stamen")
