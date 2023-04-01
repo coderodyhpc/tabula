@@ -50,7 +50,7 @@ class TextCanvasItem(QgsMapCanvasItem):
         painter = QPainter()
         painter.drawText(50, 50, "ONES")
 
-class RectangleCanvasItem(QgsMapCanvasItem):
+class Rectangulum(QgsMapCanvasItem):
     def __init__(self, canvas):
         super().__init__(canvas)
         
