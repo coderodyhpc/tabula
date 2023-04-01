@@ -4,7 +4,7 @@ import time
 
 from PyQt5.QtCore import Qt, QRectF
 from PyQt5.QtWidgets import QFileDialog, QMessageBox,QAction, QWidget, QDockWidget, QTabWidget, QMenu
-from PyQt5.QtGui import QIcon, QColor, QPainterPath
+from PyQt5.QtGui import QIcon, QColor, QPainterPath, QPainter
 
 from qgis.core import (QgsCoordinateReferenceSystem, QgsMessageLog, Qgis, QgsProject, QgsLayerTree, QgsRasterLayer,
     QgsVectorLayer, QgsPoint, QgsPointXY, QgsGeometry, QgsMapRendererJob, QgsWkbTypes
@@ -90,6 +90,9 @@ class TabulaDock(QDockWidget):
         self.setWidget(tabs)
         self.tabs = tabs
         self.add_stamen_basemap()
+        Zsize = iface.mapCanvas().size()
+        print(Zsize, "Width : " + str(Zsize.width()) + " / Height : " + str(Zsize.height()))
+
         item = CircleCanvasItem(iface.mapCanvas())
         item.setCenter(QgsPointXY(200,200))
         item.setSize(80)
