@@ -73,10 +73,9 @@ class RectangleCanvasItem(QgsMapCanvasItem):
 #        self.center.y() + self.size/2)
 
     def paint(self, painter, option, widget):
-        path = QPainterPath()
-        path.moveTo(self.center.x(), self.center.y());
-        path.addRect(self.Xsize, self.Ysize)
-        painter.fillPath(path, QColor("green"))
+        painter = QPainter()
+        painter.drawRect(self.center[0], self.center[1], self.Xsize, self.Ysize)
+#        painter.fillPath(path, QColor("green"))
 
 class TabulaDock(QDockWidget):
     def __init__(self, iface: QgisInterface, dock_widget: QDockWidget) -> None:   
