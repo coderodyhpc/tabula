@@ -30,6 +30,12 @@ class CircleCanvasItem(QgsMapCanvasItem):
     def size(self):
         return self.size
 
+    def setColor(self, color):
+        self.color = color
+
+    def color(self):
+        return self.color
+
     def boundingRect(self):
         return QRectF(self.center.x() - self.size/2,
         self.center.y() - self.size/2,
@@ -58,6 +64,11 @@ class TabulaDock(QDockWidget):
         item = CircleCanvasItem(iface.mapCanvas())
         item.setCenter(QgsPointXY(200,200))
         item.setSize(80)
+        item.setColor('yellow')
+        item2 = CircleCanvasItem(iface.mapCanvas())
+        item2.setCenter(QgsPointXY(50,50))
+        item2.setSize(20)
+        item2.setColor('green')
 
     def add_stamen_basemap(self):
         print ("Adding Stamen")
@@ -107,6 +118,8 @@ class QGISPlugin():
         """
         pass
 
+    
+    
 #__ Functions  ___#
     def show_dock(self) -> None:
         if not self.dock_widget:
