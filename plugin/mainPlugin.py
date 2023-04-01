@@ -46,15 +46,9 @@ class TextCanvasItem(QgsMapCanvasItem):
     def __init__(self, canvas):
         super().__init__(canvas)
         
-    def setCenter(self, center):
-        self.center = center
-
-    def center(self):
-        return self.center
-
     def paint(self, painter, option, widget):
         painter = QPainter()
-        painter.drawText(int(self.center[0]), int(self.center[1]), "One")
+        painter.drawText(50, 50, "ONES")
 
 class RectangleCanvasItem(QgsMapCanvasItem):
     def __init__(self, canvas):
