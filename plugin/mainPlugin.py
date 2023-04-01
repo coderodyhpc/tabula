@@ -81,7 +81,10 @@ class TabulaDock(QDockWidget):
         self.tabs = tabs
         self.add_stamen_basemap()
 #        self.add_naip_basemap()
-        
+        item = CircleCanvasItem(iface.mapCanvas())
+        item.setCenter(QgsPointXY(200,200))
+        item.setSize(80)
+
     def add_stamen_basemap(self):
         print ("Adding Stamen")
         url = 'type=xyz&zmin=0&zmax=20&url=http://a.tile.stamen.com/terrain-background/{z}/{x}/{y}.png'
