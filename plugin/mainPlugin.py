@@ -64,11 +64,11 @@ class TabulaDock(QDockWidget):
         item = CircleCanvasItem(iface.mapCanvas())
         item.setCenter(QgsPointXY(200,200))
         item.setSize(80)
-        item.setColor('yellow')
+        item.setQColor('yellow')
         item2 = CircleCanvasItem(iface.mapCanvas())
         item2.setCenter(QgsPointXY(50,50))
         item2.setSize(20)
-        item2.setColor('green')
+        item2.setQColor('green')
 
     def add_stamen_basemap(self):
         print ("Adding Stamen")
