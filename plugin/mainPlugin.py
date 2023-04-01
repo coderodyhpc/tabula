@@ -108,8 +108,8 @@ class TabulaDock(QDockWidget):
 
         item3 = RectangleCanvasItem(iface.mapCanvas())
         item3.setCenter(QgsPointXY(500,500))
-        item3.setXSize(100)
-        item3.setYSize(200)
+#        item3.setXSize(100)
+#        item3.setYSize(200)
 
     def add_stamen_basemap(self):
         print ("Adding Stamen")
