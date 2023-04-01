@@ -30,12 +30,6 @@ class CircleCanvasItem(QgsMapCanvasItem):
     def size(self):
         return self.size
 
-    def setColor(self, color):
-        self.color = color
-
-    def color(self):
-        return self.color
-
     def boundingRect(self):
         return QRectF(self.center.x() - self.size/2,
         self.center.y() - self.size/2,
@@ -46,36 +40,46 @@ class CircleCanvasItem(QgsMapCanvasItem):
         path = QPainterPath()
         path.moveTo(self.center.x(), self.center.y());
         path.arcTo(self.boundingRect(), 0.0, 360.0)
-        painter.fillPath(path, QColor("red"))
+        painter.fillPath(path, QColor("green"))
+
+class TextCanvasItem(QgsMapCanvasItem):
+    def __init__(self, canvas):
+        super().__init__(canvas)
+        
+    def setCenter(self, center):
+        self.center = center
+
+    def center(self):
+        return self.center
+
+    def paint(self, painter, option, widget):
+        painter = QPainter()
+        painter.drawText(int(self.center[0]), int(self.center[1]), "One")
 
 class RectangleCanvasItem(QgsMapCanvasItem):
     def __init__(self, canvas):
         super().__init__(canvas)
-        self.center = QgsPoint(0, 0)
-        self.size = 100
-
     def setCenter(self, center):
         self.center = center
+
+    def center(self):
         return self.center
 
-    def setXSize(self, Xsize):
-        self.Xsize = Xsize
-        return self.Xsize
+    def setSizeX(self, sizeX):
+        self.sizeX = sizeX
 
-    def setYSize(self, Ysize):
-        self.Ysize = Ysize
-        return self.Ysize
+    def sizeX(self):
+        return self.sizeX
 
-#    def boundingRect(self):
-#        return QRectF(self.center.x() - self.size/2,
-#        self.center.y() - self.size/2,
-#        self.center.x() + self.size/2,
-#        self.center.y() + self.size/2)
+    def setSizeY(self, sizeY):
+        self.sizeY = sizeY
 
+    def sizeY(self):
+        return self.sizeY
+        
     def paint(self, painter, option, widget):
         painter = QPainter()
         painter.drawRect(int(self.center[0]), int(self.center[1]), int(self.Xsize), int(self.Ysize))
-#        painter.fillPath(path, QColor("green"))
 
 class TabulaDock(QDockWidget):
     def __init__(self, iface: QgisInterface, dock_widget: QDockWidget) -> None:   
@@ -96,11 +100,10 @@ class TabulaDock(QDockWidget):
         item = CircleCanvasItem(iface.mapCanvas())
         item.setCenter(QgsPointXY(200,200))
         item.setSize(80)
-#        item.setQColor('yellow')
-        item2 = CircleCanvasItem(iface.mapCanvas())
-        item2.setCenter(QgsPointXY(50,50))
-        item2.setSize(20)
-#        item2.setQColor('green')
+
+        item2 = TextCanvasItem(iface.mapCanvas())
+        item2.setCenter(QgsPointXY(250,250))
+
         item3 = RectangleCanvasItem(iface.mapCanvas())
         item3.setCenter(QgsPointXY(500,500))
         item3.setXSize(100)
