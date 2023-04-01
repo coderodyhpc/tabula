@@ -61,7 +61,9 @@ class RectangleCanvasItem(QgsMapCanvasItem):
         return self.center
 
     def paint(self, painter, option, widget):
-        painter.drawRect(100, 100, 300, 150) 
+        print ("OAINNTER ",painter)
+        painter.drawRect(100, 100, 300, 150)
+        print ("After painter")
 
 class TabulaDock(QDockWidget):
     def __init__(self, iface: QgisInterface, dock_widget: QDockWidget) -> None:   
