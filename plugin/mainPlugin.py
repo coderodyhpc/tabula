@@ -98,10 +98,10 @@ class TabulaDock(QDockWidget):
         item.setSize(80)
 
         item2 = TextCanvasItem(iface.mapCanvas())
-        item2.setCenter(QgsPointXY(250,250))
+#        item2.setCenter(QgsPointXY(250,250))
 
         item3 = RectangleCanvasItem(iface.mapCanvas())
-        item3.setCenter(QgsPointXY(500,500))
+#        item3.setCenter(QgsPointXY(500,500))
 #        item3.setXSize(100)
 #        item3.setYSize(200)
 
