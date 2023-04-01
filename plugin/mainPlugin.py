@@ -48,6 +48,36 @@ class CircleCanvasItem(QgsMapCanvasItem):
         path.arcTo(self.boundingRect(), 0.0, 360.0)
         painter.fillPath(path, QColor("red"))
 
+class RectangleCanvasItem(QgsMapCanvasItem):
+    def __init__(self, canvas):
+        super().__init__(canvas)
+        self.center = QgsPoint(0, 0)
+        self.size = 100
+
+    def setCenter(self, center):
+        self.center = center
+        return self.center
+
+    def setXSize(self, Xsize):
+        self.Xsize = Xsize
+        return self.Xsize
+
+    def setYSize(self, Ysize):
+        self.Ysize = Ysize
+        return self.Ysize
+
+#    def boundingRect(self):
+#        return QRectF(self.center.x() - self.size/2,
+#        self.center.y() - self.size/2,
+#        self.center.x() + self.size/2,
+#        self.center.y() + self.size/2)
+
+    def paint(self, painter, option, widget):
+        path = QPainterPath()
+        path.moveTo(self.center.x(), self.center.y());
+        path.addRect(self.Xsize, self.Ysize)
+        painter.fillPath(path, QColor("green"))
+
 class TabulaDock(QDockWidget):
     def __init__(self, iface: QgisInterface, dock_widget: QDockWidget) -> None:   
         super().__init__('TABULA')
@@ -64,11 +94,15 @@ class TabulaDock(QDockWidget):
         item = CircleCanvasItem(iface.mapCanvas())
         item.setCenter(QgsPointXY(200,200))
         item.setSize(80)
-        item.setQColor('yellow')
+#        item.setQColor('yellow')
         item2 = CircleCanvasItem(iface.mapCanvas())
         item2.setCenter(QgsPointXY(50,50))
         item2.setSize(20)
-        item2.setQColor('green')
+#        item2.setQColor('green')
+        item3 = RectangleCanvasItem(iface.mapCanvas())
+        item3.setCenter(QgsPointXY(500,500))
+        item3.setXSize(100)
+        item3.setYSize(200)
 
     def add_stamen_basemap(self):
         print ("Adding Stamen")
