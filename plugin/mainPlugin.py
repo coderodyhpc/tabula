@@ -10,6 +10,62 @@ from PyQt5.QtWidgets import QAction, QWidget, QDockWidget, QTabWidget
 from qgis.core import QgsCoordinateReferenceSystem, QgsMessageLog, Qgis, QgsProject, QgsLayerTree, QgsRasterLayer
 from qgis.gui import QgisInterface
 
+from qgis.PyQt.QtGui import (
+    QColor,
+)
+
+from qgis.PyQt.QtCore import Qt, QRectF
+
+from qgis.PyQt.QtWidgets import QMenu
+
+from qgis.core import (
+    QgsVectorLayer,
+    QgsPoint,
+    QgsPointXY,
+    QgsProject,
+    QgsGeometry,
+    QgsMapRendererJob,
+    QgsWkbTypes,
+)
+
+from qgis.gui import (
+    QgsMapCanvas,
+    QgsVertexMarker,
+    QgsMapCanvasItem,
+    QgsMapMouseEvent,
+    QgsRubberBand,
+)
+
+class CircleCanvasItem(QgsMapCanvasItem):
+    def __init__(self, canvas):
+        super().__init__(canvas)
+        self.center = QgsPoint(0, 0)
+        self.size = 100
+
+    def setCenter(self, center):
+        self.center = center
+
+    def center(self):
+        return self.center
+
+    def setSize(self, size):
+        self.size = size
+
+    def size(self):
+        return self.size
+
+    def boundingRect(self):
+        return QRectF(self.center.x() - self.size/2,
+        self.center.y() - self.size/2,
+        self.center.x() + self.size/2,
+        self.center.y() + self.size/2)
+
+    def paint(self, painter, option, widget):
+        path = QPainterPath()
+        path.moveTo(self.center.x(), self.center.y());
+        path.arcTo(self.boundingRect(), 0.0, 360.0)
+        painter.fillPath(path, QColor("red"))
+
 class TabulaDock(QDockWidget):
     def __init__(self, iface: QgisInterface, dock_widget: QDockWidget) -> None:   
         super().__init__('TABULA')
