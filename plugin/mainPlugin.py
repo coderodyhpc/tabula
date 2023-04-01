@@ -50,7 +50,7 @@ class TextCanvasItem(QgsMapCanvasItem):
         painter = QPainter()
         painter.drawText(50, 50, "ONES")
 
-class Rectangulum(QgsMapCanvasItem):
+class RectangleCanvasItem(QgsMapCanvasItem):
     def __init__(self, canvas):
         super().__init__(canvas)
         
@@ -60,22 +60,8 @@ class Rectangulum(QgsMapCanvasItem):
     def center(self):
         return self.center
 
-    def setSizeX(self, sizeX):
-        self.sizeX = sizeX
-
-    def sizeX(self):
-        return self.sizeX
-
-    def setSizeY(self, sizeY):
-        self.sizeY = sizeY
-
-    def sizeY(self):
-        return self.sizeY
-        
     def paint(self, painter, option, widget):
-        painter = QPainter()
-        painter.drawRect(100, 100, 300, 150)
-#        painter.drawRect(100, 100, int(self.sizeX), int(self.sizeY))
+        painter.drawRect(100, 100, 300, 150) 
 
 class TabulaDock(QDockWidget):
     def __init__(self, iface: QgisInterface, dock_widget: QDockWidget) -> None:   
@@ -97,7 +83,7 @@ class TabulaDock(QDockWidget):
         item.setCenter(QgsPointXY(200,200))
         item.setSize(80)
 
-        item2 = TextCanvasItem(iface.mapCanvas())
+#        item2 = TextCanvasItem(iface.mapCanvas())
 #        item2.setCenter(QgsPointXY(250,250))
 
         item3 = RectangleCanvasItem(iface.mapCanvas())
