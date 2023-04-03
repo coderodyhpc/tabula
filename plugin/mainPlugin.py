@@ -109,7 +109,7 @@ class Legenda(QgsMapCanvasItem):
         painter.setPen(QColor(Qt.black))
         painter.setFont(QFont('Verdana', self.altitudo-2))
         painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-1+(0*self.altitudo), self.numeri[0])
-        painter.fillRect(imum_sinister[0], imum_sinister[1]+(1*self.altitudo), self.longitudo, self.altitudo, QColor(self.pigmenti[0]))          
+        painter.fillRect(imum_sinister[0], imum_sinister[1]+(1*self.altitudo), self.longitudo, self.altitudo, QColor(self.pigmenti[0,0],self.pigmenti[0,1],self.pigmenti[0,2]))          
             
 #        painter.drawRect(100, 100, 100, 50)
         print ("After painter")
