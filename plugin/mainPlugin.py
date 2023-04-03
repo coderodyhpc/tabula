@@ -95,7 +95,7 @@ class Legenda(QgsMapCanvasItem):
 
     def paint(self, painter, option, widget):
         imum_sinister = [400, 400]
-        for iii in range(1:2):
+        for iii in range(2):
             print ("III ",iii,self.numeri[iii-1],self.pigmenti[iii-1])
             painter.setPen(QColor(Qt.black))
             painter.setFont(QFont('Verdana', self.altitudo-2))
