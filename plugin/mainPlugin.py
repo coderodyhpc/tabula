@@ -208,7 +208,7 @@ class TabulaDock(QDockWidget):
         self.setWidget(tabs)
         self.tabs = tabs
         self.add_stamen_basemap()
-        Zsize = qgis.utils.iface.mapCanvas().size()
+        Zsize = iface.mapCanvas().size()
         print(Zsize, "Width : " + str(Zsize.width()) + " / Height : " + str(Zsize.height()))
         rasa = QgsMapCanvas()
         print ("RASA ", rasa, type(rasa))
