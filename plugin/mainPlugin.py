@@ -141,8 +141,10 @@ class TabulaDock(QDockWidget):
         numerum_l = ["aaa.111554254", "bbb.267", "c.963456","fffff.111", "50.267", "65.963","70.111", "80.267", "95.963"] 
         item4 = Legenda9(iface.mapCanvas(), numerum_l, title, units)
         
-#        numerum_11 = ["10.111554254", "0.267", "35.963456","40.111", "50.267", "65.963", "70.111", "80.267", "95.963", "100.963", "1295.963"] 
-#        item5 = Legenda11(iface.mapCanvas(), numerum_11, title, units)
+        title11 = "P (P at 10 m)"
+        units11 = "Pa"
+        numerum_11 = ["10.111554254", "0.267", "35.963456","40.111", "50.267", "65.963", "70.111", "80.267", "95.963", "100.963", "1295.963"] 
+        item5 = Legenda11(iface.mapCanvas(), numerum_11, title11, units11)
 
 
     def add_stamen_basemap(self):
