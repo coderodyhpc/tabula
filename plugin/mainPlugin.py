@@ -66,7 +66,7 @@ class RectangleCanvasItem(QgsMapCanvasItem):
 #        painter.setBrush(QBrush(QColor("orange")))
         painter.setPen(QColor(Qt.red))
         painter.setFont(QFont('Verdana', 14))
-	painter.drawText(355,285, "ECCE")
+        painter.drawText(355,285, "ECCE")
 #        painter.fillRect(300, 284, 50, 16, Union[QBrush(QColor("orange"))])
         painter.setPen(QColor(Qt.blue))
         painter.drawRect(300, 284, 50, 16)          
