@@ -1,4 +1,4 @@
-from typing import List, Callable
+from typing import List, Callable, Union
 from threading import Timer
 import time
 
