@@ -81,10 +81,11 @@ class RectangleCanvasItem(QgsMapCanvasItem):
         painter.fillRect(360, 176, 40, 12, QColor(127,127,127))          
 
 class Legenda(QgsMapCanvasItem):
-    def __init__(self, canvas, numeri, pigmenti):
+    def __init__(self, canvas, numeri, titulus, unitas):
         super().__init__(canvas)
         self.numeri = numeri
-        self.pigmenti = pigmenti
+        self.titulus = titulus 
+        self.unitas = unitas
 #        print ("SELFPIGMENTI ",self.pigmenti)
         self.altitudo = 12
         self.longitudo = 40
@@ -98,12 +99,17 @@ class Legenda(QgsMapCanvasItem):
     def paint(self, painter, option, widget):
         imum_sinister = [400, 400]
         painter.setPen(QColor(Qt.black))
-        painter.drawRect(imum_sinister[0]-5, imum_sinister[1]-5-(9*self.altitudo+10), 125, 9*self.altitudo+20)
+        painter.drawRect(imum_sinister[0]-5, imum_sinister[1]-5-(11*self.altitudo), 125, 11*self.altitudo+10)
+        painter.setPen(QColor(Qt.black))
+        painter.setFont(QFont('Verdana', self.altitudo-2))
+        painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-2-(11*self.altitudo), self.titulus)
+        painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-2-(10*self.altitudo), self.unitas)
         for iii in range(9):
 #            print ("III ",iii,self.numeri[iii],self.pigmenti[iii])
             painter.setPen(QColor(Qt.black))
             painter.setFont(QFont('Verdana', self.altitudo-2))
-            painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-2-(iii*self.altitudo), self.numeri[iii])
+            aaa = str(self.numeri[iii])
+            painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-2-(iii*self.altitudo), aaa[:7])
             if iii == 0:
                 painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255,0,0))          
             elif iii == 1:
@@ -137,8 +143,56 @@ class Legenda(QgsMapCanvasItem):
 #        painter.setBrush(QBrush(QColor("orange")))
 #        painter.fillRect(300, 300-32, 50, 16)
 
+class Legenda11(QgsMapCanvasItem):
+    def __init__(self, canvas, numeri, titulus, unitas):
+        super().__init__(canvas)
+        self.numeri = numeri
+        self.titulus = titulus 
+        self.unitas = unitas
+        self.altitudo = 12
+        self.longitudo = 40
+        
+    def setCenter(self, center):
+        self.center = center
 
+    def center(self):
+        return self.center
 
+    def paint(self, painter, option, widget):
+        imum_sinister = [500, 400]
+        painter.setPen(QColor(Qt.black))
+        painter.drawRect(imum_sinister[0]-5, imum_sinister[1]-5-(13*self.altitudo), 125, 11*self.altitudo+10)
+        painter.setPen(QColor(Qt.black))
+        painter.setFont(QFont('Verdana', self.altitudo-2))
+        painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-2-(13*self.altitudo), self.titulus)
+        painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-2-(12*self.altitudo), self.unitas)
+        for iii in range(11):
+            painter.setPen(QColor(Qt.black))
+            painter.setFont(QFont('Verdana', self.altitudo-2))
+            aaa = str(self.numeri[iii])
+            painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-2-(iii*self.altitudo), aaa[:7])
+            if iii == 0:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(41, 27, 45))          
+            elif iii == 1:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(41, 27, 45))          
+            elif iii == 2:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(114, 254, 101))          
+            elif iii == 3:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(114, 254, 101))          
+            elif iii == 4:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(243, 201, 43))          
+            elif iii == 5:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(243, 201, 43))          
+            elif iii == 6:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(252, 106, 25))          
+            elif iii == 7:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(252, 106, 25))          
+            elif iii == 8:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(184, 32, 8))          
+            elif iii == 9:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(164, 22, 4))          
+            elif iii == 10:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(144, 12, 0))          
 
 
 class TabulaDock(QDockWidget):
@@ -156,6 +210,9 @@ class TabulaDock(QDockWidget):
         self.add_stamen_basemap()
         Zsize = qgis.utils.iface.mapCanvas().size()
         print(Zsize, "Width : " + str(Zsize.width()) + " / Height : " + str(Zsize.height()))
+        rasa = QgsMapCanvas()
+        print ("RASA ",rasa,type(rasa))
+        print ("RASAsize ",rasa.size())
 
 #        item = CircleCanvasItem(iface.mapCanvas())
 #        item.setCenter(QgsPointXY(200,200))
@@ -165,14 +222,10 @@ class TabulaDock(QDockWidget):
 #        item2.setCenter(QgsPointXY(250,250))
 
         item3 = RectangleCanvasItem(iface.mapCanvas())
-        pigmentum_l = [QColor(27, 0, 0), QColor(127, 127, 0), QColor(227, 0, 127)]
-        print ("Pigmemtum_type ",type(pigmentum_l), type(pigmentum_l[1]), pigmentum_l[1])
-        numerum_l = ["10.111", "20.267", "35.963456","40.111", "50.267", "65.963","70.111", "80.267", "95.963"] 
-        item4 = Legenda(iface.mapCanvas(), numerum_l, pigmentum_l)
-#        item3.setCenter(QgsPointXY(500,500))
-#        item3.setXSize(100)
-#        item3.setYSize(200)
-
+        title = "U10 (U at 10 m)"
+        units = "m s-1"
+        numerum_l = ["10.111554254", "0.267", "35.963456","40.111", "50.267", "65.963","70.111", "80.267", "95.963"] 
+        item4 = Legenda(iface.mapCanvas(), title, units)
 
 
     def add_stamen_basemap(self):
