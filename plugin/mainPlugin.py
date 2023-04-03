@@ -97,13 +97,18 @@ class Legenda(QgsMapCanvasItem):
     def paint(self, painter, option, widget):
         imum_sinister = [400, 400]
         painter.setPen(QColor(Qt.black))
-        painter.drawRect(imum_sinister[0]-5, imum_sinister[1]-5, 75, self.altitudo)
-        for iii in range(3):
-            print ("III ",iii,self.numeri[iii],self.pigmenti[iii])
-            painter.setPen(QColor(Qt.black))
-            painter.setFont(QFont('Verdana', self.altitudo-2))
-            painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-1+(iii*self.altitudo), self.numeri[iii])
-            painter.fillRect(imum_sinister[0], imum_sinister[1]+((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(self.pigmenti[iii]))          
+        painter.drawRect(imum_sinister[0]-5, imum_sinister[1]-5-(9*self.altitudo+10), 100, 9*self.altitudo+10)
+#        for iii in range(3):
+#            print ("III ",iii,self.numeri[iii],self.pigmenti[iii])
+#            painter.setPen(QColor(Qt.black))
+#            painter.setFont(QFont('Verdana', self.altitudo-2))
+#            painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-1+(iii*self.altitudo), self.numeri[iii])
+#            painter.fillRect(imum_sinister[0], imum_sinister[1]+((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(self.pigmenti[iii]))          
+        print ("PIG ",self.pigmenti[0])
+        painter.setPen(QColor(Qt.black))
+        painter.setFont(QFont('Verdana', self.altitudo-2))
+        painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-1+(0*self.altitudo), self.numeri[0])
+        painter.fillRect(imum_sinister[0], imum_sinister[1]+(1*self.altitudo), self.longitudo, self.altitudo, QColor(self.pigmenti[0]))          
             
 #        painter.drawRect(100, 100, 100, 50)
         print ("After painter")
