@@ -97,7 +97,7 @@ class Legenda(QgsMapCanvasItem):
     def paint(self, painter, option, widget):
         imum_sinister = [400, 400]
         painter.setPen(QColor(Qt.black))
-        painter.drawRect[imum_sinister[0]-5, imum_sinister[1]-5, 75, self.altitudo]
+        painter.drawRect[(imum_sinister[0]-5), (imum_sinister[1]-5), 75, self.altitudo]
         for iii in range(3):
             print ("III ",iii,self.numeri[iii],self.pigmenti[iii])
             painter.setPen(QColor(Qt.black))
