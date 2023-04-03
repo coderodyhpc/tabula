@@ -11,137 +11,12 @@ from qgis.core import (QgsCoordinateReferenceSystem, QgsMessageLog, Qgis, QgsPro
 )
 from qgis.gui import QgisInterface, QgsMapCanvas, QgsVertexMarker, QgsMapCanvasItem, QgsMapMouseEvent, QgsRubberBand
 
-
-class CircleCanvasItem(QgsMapCanvasItem):
-    def __init__(self, canvas):
-        super().__init__(canvas)
-        self.center = QgsPoint(0, 0)
-        self.size = 100
-
-    def setCenter(self, center):
-        self.center = center
-
-    def center(self):
-        return self.center
-
-    def setSize(self, size):
-        self.size = size
-
-    def size(self):
-        return self.size
-
-    def boundingRect(self):
-        return QRectF(self.center.x() - self.size/2,
-        self.center.y() - self.size/2,
-        self.center.x() + self.size/2,
-        self.center.y() + self.size/2)
-
-    def paint(self, painter, option, widget):
-        path = QPainterPath()
-        path.moveTo(self.center.x(), self.center.y());
-        path.arcTo(self.boundingRect(), 0.0, 360.0)
-        painter.fillPath(path, QColor("green"))
-
 class TextCanvasItem(QgsMapCanvasItem):
     def __init__(self, canvas):
         super().__init__(canvas)
         
     def paint(self, painter, option, widget):
         painter.drawText(50, 50, "ONES")
-
-class RectangleCanvasItem(QgsMapCanvasItem):
-    def __init__(self, canvas):
-        super().__init__(canvas)
-        
-    def setCenter(self, center):
-        self.center = center
-
-    def center(self):
-        return self.center
-
-    def paint(self, painter, option, widget):
-        painter.drawRect(100, 100, 100, 50)
-#        painter.setBrush(QBrush(QColor("orange")))
-
-        painter.setPen(QColor(Qt.blue))
-        painter.setFont(QFont('Verdana', 12))
-        painter.drawText(355,299, "ECCE")
-#        painter.fillRect(300, 284, 50, 16, Union[QBrush(QColor("orange"))])
-        painter.setPen(QColor(Qt.blue))
-        painter.drawRect(300, 284, 50, 16)          
-#        painter.setBrush(QBrush(QColor("yellow")))
-#        painter.fillRect(300, 300-32, 50, 16)
-
-        painter.setPen(QColor(Qt.red))
-        painter.setFont(QFont('Verdana', 10))
-        painter.drawText(405,199, "15.307")
-#        painter.fillRect(300, 284, 50, 16, Union[QBrush(QColor("orange"))])
-#        painter.setPen(QColor(Qt.red))
-        painter.fillRect(360, 188, 40, 12, QColor(15,15,15))          
-        painter.fillRect(360, 176, 40, 12, QColor(127,127,127))          
-
-class Legenda(QgsMapCanvasItem):
-    def __init__(self, canvas, numeri, titulus, unitas):
-        super().__init__(canvas)
-        self.numeri = numeri
-        self.titulus = titulus 
-        self.unitas = unitas
-#        print ("SELFPIGMENTI ",self.pigmenti)
-        self.altitudo = 12
-        self.longitudo = 40
-        
-    def setCenter(self, center):
-        self.center = center
-
-    def center(self):
-        return self.center
-
-    def paint(self, painter, option, widget):
-        imum_sinister = [400, 400]
-        painter.setPen(QColor(Qt.black))
-        painter.drawRect(imum_sinister[0]-5, imum_sinister[1]-5-(11*self.altitudo), 125, 11*self.altitudo+10)
-        painter.setPen(QColor(Qt.black))
-        painter.setFont(QFont('Verdana', self.altitudo-2))
-        painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-2-(11*self.altitudo), self.titulus)
-        painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-2-(10*self.altitudo), self.unitas)
-        for iii in range(9):
-#            print ("III ",iii,self.numeri[iii],self.pigmenti[iii])
-            painter.setPen(QColor(Qt.black))
-            painter.setFont(QFont('Verdana', self.altitudo-2))
-            aaa = str(self.numeri[iii])
-            painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-2-(iii*self.altitudo), aaa[:7])
-            if iii == 0:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255,0,0))          
-            elif iii == 1:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255-64,0,0))          
-            elif iii == 2:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(127,0,0))          
-            elif iii == 3:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(63,0,0))          
-            elif iii == 4:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(0,0,0))          
-            elif iii == 5:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(0,0,63))          
-            elif iii == 6:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(0,0,127))          
-            elif iii == 7:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(0,0,191))          
-            elif iii == 8:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(0,0,255))          
-                
-#        aaa = QColor(self.pigmenti[0])
-#        print ("PIGM ",self.pigmenti[0],type(self.pigmenti[0]))
-#        painter.setPen(QColor(Qt.black))
-#        painter.setFont(QFont('Verdana', self.altitudo-2))
-#        painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-1+(0*self.altitudo), self.numeri[0])
-#        painter.fillRect(imum_sinister[0], imum_sinister[1]-(1*self.altitudo), self.longitudo, self.altitudo, self.pigmenti[0])          
-            
-#        painter.drawRect(100, 100, 100, 50)
-        print ("After painter")
-#        painter.setBrush(QBrush(QColor("orange")))
-#        painter.fillRect(300, 300-16, 50, 16)
-#        painter.setBrush(QBrush(QColor("orange")))
-#        painter.fillRect(300, 300-32, 50, 16)
 
 class Legenda9(QgsMapCanvasItem):
     def __init__(self, canvas, numeri, titulus, unitas):
@@ -206,40 +81,40 @@ class Legenda11(QgsMapCanvasItem):
         return self.center
 
     def paint(self, painter, option, widget):
-        imum_sinister = [600, 400]
+        imum_sinister11 = [600, 400]
         painter.setPen(QColor(Qt.black))
-        painter.drawRect(imum_sinister[0]-5, imum_sinister[1]-5-(13*self.altitudo), 110, 11*self.altitudo+10)
+        painter.drawRect(imum_sinister11[0]-5, imum_sinister11[1]-5-(13*self.altitudo), 110, 11*self.altitudo+10)
         painter.setPen(QColor(Qt.black))
         painter.setFont(QFont('Verdana', self.altitudo-2))
-        painter.drawText(imum_sinister[0]+5, imum_sinister[1]-2-(12*self.altitudo), self.titulus)
-        painter.drawText(imum_sinister[0]+5, imum_sinister[1]-2-(11*self.altitudo), self.unitas)
+        painter.drawText(imum_sinister11[0]+5, imum_sinister11[1]-2-(12*self.altitudo), self.titulus)
+        painter.drawText(imum_sinister11[0]+5, imum_sinister11[1]-2-(11*self.altitudo), self.unitas)
         for iii in range(11):
             painter.setPen(QColor(Qt.black))
             painter.setFont(QFont('Verdana', self.altitudo-2))
             aaa = str(self.numeri[iii])
-            painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-2-(iii*self.altitudo), aaa[:7])
+            painter.drawText(imum_sinister11[0]+self.longitudo+5, imum_sinister11[1]-2-(iii*self.altitudo), aaa[:7])
             if iii == 0:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(41, 27, 45))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(41, 27, 45))          
             elif iii == 1:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(78,141,73))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(78,141,73))          
             elif iii == 2:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(114, 254, 101))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(114, 254, 101))          
             elif iii == 3:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(179,228,72))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(179,228,72))          
             elif iii == 4:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(243, 201, 43))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(243, 201, 43))          
             elif iii == 5:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(248,154,34))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(248,154,34))          
             elif iii == 6:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(252, 106, 25))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(252, 106, 25))          
             elif iii == 7:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(218,69,17))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(218,69,17))          
             elif iii == 8:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(184, 32, 8))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(184, 32, 8))          
             elif iii == 9:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(164, 22, 4))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(164, 22, 4))          
             elif iii == 10:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(144, 12, 0))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(144, 12, 0))          
                 
 
 class TabulaDock(QDockWidget):
