@@ -103,13 +103,26 @@ class Legenda(QgsMapCanvasItem):
 #            print ("III ",iii,self.numeri[iii],self.pigmenti[iii])
             painter.setPen(QColor(Qt.black))
             painter.setFont(QFont('Verdana', self.altitudo-2))
-            painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-1+(iii*self.altitudo), self.numeri[iii])
+            painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-1-(iii*self.altitudo), self.numeri[iii])
             if iii == 0:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]+((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255,0,0))          
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255,0,0))          
             elif iii == 1:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]+((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(199,0,0))          
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255-64,0,0))          
             elif iii == 2:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]+((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(199,0,0))          
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(127,0,0))          
+            elif iii == 3:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(63,0,0))          
+            elif iii == 4:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(0,0,0))          
+            elif iii == 5:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(0,0,63))          
+            elif iii == 6:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(0,0,127))          
+            elif iii == 7:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(0,0,191))          
+            elif iii == 8:
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(0,0,255))          
+                
 #        aaa = QColor(self.pigmenti[0])
 #        print ("PIGM ",self.pigmenti[0],type(self.pigmenti[0]))
 #        painter.setPen(QColor(Qt.black))
@@ -154,7 +167,7 @@ class TabulaDock(QDockWidget):
         item3 = RectangleCanvasItem(iface.mapCanvas())
         pigmentum_l = [QColor(27, 0, 0), QColor(127, 127, 0), QColor(227, 0, 127)]
         print ("Pigmemtum_type ",type(pigmentum_l), type(pigmentum_l[1]), pigmentum_l[1])
-        numerum_l = ["30.111", "10.267", "25.963"] 
+        numerum_l = ["10.111", "20.267", "35.963","40.111", "50.267", "65.963","70.111", "80.267", "95.963"] 
         item4 = Legenda(iface.mapCanvas(), numerum_l, pigmentum_l)
 #        item3.setCenter(QgsPointXY(500,500))
 #        item3.setXSize(100)
@@ -210,8 +223,6 @@ class QGISPlugin():
         """
         pass
 
-    
-    
 #__ Functions  ___#
     def show_dock(self) -> None:
         if not self.dock_widget:
