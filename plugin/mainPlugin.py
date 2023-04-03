@@ -96,11 +96,11 @@ class Legenda(QgsMapCanvasItem):
     def paint(self, painter, option, widget):
         imum_sinister = [400, 400]
         for iii in range(2):
-            print ("III ",iii,self.numeri[iii-1],self.pigmenti[iii-1])
+            print ("III ",iii,self.numeri[iii],self.pigmenti[iii])
             painter.setPen(QColor(Qt.black))
             painter.setFont(QFont('Verdana', self.altitudo-2))
-            painter.drawText(imum_sinister[0]+50, imum_sinister[1]-1+(iii-1)*self.altitudo, self.numeri[iii-1])
-            painter.fillRect(imum_sinister[0], imum_sinister[1]+(iii-1)*self.altitudo, 40, self.altitudo, QColor(self.pigmenti[iii-1]))          
+            painter.drawText(imum_sinister[0]+50, imum_sinister[1]-1+(iii*self.altitudo), self.numeri[iii])
+            painter.fillRect(imum_sinister[0], imum_sinister[1]+(iii*self.altitudo), 40, self.altitudo, QColor(self.pigmenti[iii]))          
             
 #        painter.drawRect(100, 100, 100, 50)
         print ("After painter")
