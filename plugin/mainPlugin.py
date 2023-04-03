@@ -98,7 +98,7 @@ class Legenda(QgsMapCanvasItem):
     def paint(self, painter, option, widget):
         imum_sinister = [400, 400]
         painter.setPen(QColor(Qt.black))
-        painter.drawRect(imum_sinister[0]-5, imum_sinister[1]-5-(9*self.altitudo+10), 100, 9*self.altitudo+20)
+        painter.drawRect(imum_sinister[0]-5, imum_sinister[1]-5-(9*self.altitudo+10), 125, 9*self.altitudo+20)
         for iii in range(9):
 #            print ("III ",iii,self.numeri[iii],self.pigmenti[iii])
             painter.setPen(QColor(Qt.black))
@@ -167,7 +167,7 @@ class TabulaDock(QDockWidget):
         item3 = RectangleCanvasItem(iface.mapCanvas())
         pigmentum_l = [QColor(27, 0, 0), QColor(127, 127, 0), QColor(227, 0, 127)]
         print ("Pigmemtum_type ",type(pigmentum_l), type(pigmentum_l[1]), pigmentum_l[1])
-        numerum_l = ["10.111", "20.267", "35.963","40.111", "50.267", "65.963","70.111", "80.267", "95.963"] 
+        numerum_l = ["10.111", "20.267", "35.963456","40.111", "50.267", "65.963","70.111", "80.267", "95.963"] 
         item4 = Legenda(iface.mapCanvas(), numerum_l, pigmentum_l)
 #        item3.setCenter(QgsPointXY(500,500))
 #        item3.setXSize(100)
