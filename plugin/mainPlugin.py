@@ -159,7 +159,7 @@ class Legenda11(QgsMapCanvasItem):
         return self.center
 
     def paint(self, painter, option, widget):
-        imum_sinister = [500, 400]
+        imum_sinister = [600, 400]
         painter.setPen(QColor(Qt.black))
         painter.drawRect(imum_sinister[0]-5, imum_sinister[1]-5-(13*self.altitudo), 125, 11*self.altitudo+10)
         painter.setPen(QColor(Qt.black))
@@ -211,8 +211,8 @@ class TabulaDock(QDockWidget):
         Zsize = qgis.utils.iface.mapCanvas().size()
         print(Zsize, "Width : " + str(Zsize.width()) + " / Height : " + str(Zsize.height()))
         rasa = QgsMapCanvas()
-        print ("RASA ",rasa,type(rasa))
-        print ("RASAsize ",rasa.size())
+        print ("RASA ", rasa, type(rasa))
+        print ("RASAsize ", rasa.size())
 
 #        item = CircleCanvasItem(iface.mapCanvas())
 #        item.setCenter(QgsPointXY(200,200))
@@ -225,7 +225,10 @@ class TabulaDock(QDockWidget):
         title = "U10 (U at 10 m)"
         units = "m s-1"
         numerum_l = ["10.111554254", "0.267", "35.963456","40.111", "50.267", "65.963","70.111", "80.267", "95.963"] 
-        item4 = Legenda(iface.mapCanvas(), title, units)
+        item4 = Legenda(iface.mapCanvas(), numerum_l, title, units)
+        
+        numerum_11 = ["10.111554254", "0.267", "35.963456","40.111", "50.267", "65.963", "70.111", "80.267", "95.963", "100.963", "1295.963"] 
+        item5 = Legenda11(iface.mapCanvas(), numerum_11, title, units)
 
 
     def add_stamen_basemap(self):
