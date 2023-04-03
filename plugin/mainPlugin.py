@@ -82,9 +82,9 @@ class Legenda(QgsMapCanvasItem):
         print ("OAINNTER ",painter)
         painter.drawRect(100, 100, 100, 50)
         print ("After painter")
-        painter.setBrush(QBrush(Qt::yellow))
+        painter.setBrush(QBrush(QColor("orange")))
         painter.fillRect(300, 300-16, 50, 16)
-        painter.setBrush(QBrush(Qt::green))
+        painter.setBrush(QBrush(QColor("orange")))
         painter.fillRect(300, 300-32, 50, 16)
 
 class TabulaDock(QDockWidget):
