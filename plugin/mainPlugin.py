@@ -95,7 +95,7 @@ class Legenda(QgsMapCanvasItem):
 
     def paint(self, painter, option, widget):
         imum_sinister = [400, 400]
-        for iii in range(2):
+        for iii in range(3):
             print ("III ",iii,self.numeri[iii],self.pigmenti[iii])
             painter.setPen(QColor(Qt.black))
             painter.setFont(QFont('Verdana', self.altitudo-2))
@@ -133,8 +133,8 @@ class TabulaDock(QDockWidget):
 #        item2.setCenter(QgsPointXY(250,250))
 
         item3 = RectangleCanvasItem(iface.mapCanvas())
-        pigmentum_l = [(127, 0, 0), (227, 0, 0)] 
-        numerum_l = ["10.267", "25.963"] 
+        pigmentum_l = [(27, 0, 0), (127, 0, 0), (227, 0, 0)] 
+        numerum_l = ["30.111", "10.267", "25.963"] 
         item4 = Legenda(iface.mapCanvas(), numerum_l, pigmentum_l)
 #        item3.setCenter(QgsPointXY(500,500))
 #        item3.setXSize(100)
