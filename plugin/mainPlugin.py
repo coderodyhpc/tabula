@@ -34,9 +34,9 @@ class Legenda9(QgsMapCanvasItem):
         return self.center
 
     def paint(self, painter, option, widget):
-        imum_sinister = [600, 400]
+        imum_sinister = [100, 400]
         painter.setPen(QColor(Qt.black))
-        painter.drawRect(imum_sinister[0]-5, imum_sinister[1]-5-(11*self.altitudo), 110, 9*self.altitudo+10)
+        painter.drawRect(imum_sinister[0]-5, imum_sinister[1]-5-(11*self.altitudo), 130, 11*self.altitudo+10)
         painter.setPen(QColor(Qt.black))
         painter.setFont(QFont('Verdana', self.altitudo-2))
         painter.drawText(imum_sinister[0]+5, imum_sinister[1]-2-(10*self.altitudo), self.titulus)
@@ -83,7 +83,7 @@ class Legenda11(QgsMapCanvasItem):
     def paint(self, painter, option, widget):
         imum_sinister11 = [600, 400]
         painter.setPen(QColor(Qt.black))
-        painter.drawRect(imum_sinister11[0]-5, imum_sinister11[1]-5-(13*self.altitudo), 110, 11*self.altitudo+10)
+        painter.drawRect(imum_sinister11[0]-5, imum_sinister11[1]-5-(13*self.altitudo), 130, 13*self.altitudo+10)
         painter.setPen(QColor(Qt.black))
         painter.setFont(QFont('Verdana', self.altitudo-2))
         painter.drawText(imum_sinister11[0]+5, imum_sinister11[1]-2-(12*self.altitudo), self.titulus)
