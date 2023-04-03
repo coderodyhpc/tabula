@@ -76,8 +76,8 @@ class RectangleCanvasItem(QgsMapCanvasItem):
         painter.setFont(QFont('Verdana', 10))
         painter.drawText(405,199, "15.307")
 #        painter.fillRect(300, 284, 50, 16, Union[QBrush(QColor("orange"))])
-        painter.setPen(QColor(Qt.red))
-        painter.fillRect(360, 188, 40, 12)          
+#        painter.setPen(QColor(Qt.red))
+        painter.fillRect(360, 188, 40, 12, QColor(Qt.red))          
 
 class Legenda(QgsMapCanvasItem):
     def __init__(self, canvas):
