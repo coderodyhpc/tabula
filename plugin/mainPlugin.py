@@ -109,6 +109,10 @@ class Legenda(QgsMapCanvasItem):
 #        painter.setBrush(QBrush(QColor("orange")))
 #        painter.fillRect(300, 300-32, 50, 16)
 
+
+
+
+
 class TabulaDock(QDockWidget):
     def __init__(self, iface: QgisInterface, dock_widget: QDockWidget) -> None:   
         super().__init__('TABULA')
@@ -133,13 +137,15 @@ class TabulaDock(QDockWidget):
 #        item2.setCenter(QgsPointXY(250,250))
 
         item3 = RectangleCanvasItem(iface.mapCanvas())
-        pigmentum_l = {(27, 0, 0), (127, 0, 0), (227, 0, 0)}
-        print ("Pigmemtum_type ",type(pigmentum_l), pigmentum_l[1])
+        pigmentum_l = ["(27, 0, 0)", "(127, 0, 0)", "(227, 0, 0)"]
+        print ("Pigmemtum_type ",type(pigmentum_l), type(pigmentum_l[1]), pigmentum_l[1])
         numerum_l = ["30.111", "10.267", "25.963"] 
         item4 = Legenda(iface.mapCanvas(), numerum_l, pigmentum_l)
 #        item3.setCenter(QgsPointXY(500,500))
 #        item3.setXSize(100)
 #        item3.setYSize(200)
+
+
 
     def add_stamen_basemap(self):
         print ("Adding Stamen")
