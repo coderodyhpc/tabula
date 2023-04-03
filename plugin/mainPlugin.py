@@ -136,14 +136,6 @@ class TabulaDock(QDockWidget):
         print ("RASA ", rasa, type(rasa))
         print ("RASAsize ", rasa.size())
 
-#        item = CircleCanvasItem(iface.mapCanvas())
-#        item.setCenter(QgsPointXY(200,200))
-#        item.setSize(80)
-
-        item2 = TextCanvasItem(iface.mapCanvas())
-#        item2.setCenter(QgsPointXY(250,250))
-
-        item3 = RectangleCanvasItem(iface.mapCanvas())
         title = "U10 (U at 10 m)"
         units = "m s-1"
         numerum_l = ["aaa.111554254", "bbb.267", "c.963456","fffff.111", "50.267", "65.963","70.111", "80.267", "95.963"] 
