@@ -60,15 +60,13 @@ class RectangleCanvasItem(QgsMapCanvasItem):
         return self.center
 
     def paint(self, painter, option, widget):
-        print ("OAINNTER ",painter)
         painter.drawRect(100, 100, 100, 50)
-        print ("After painter")
 #        painter.setBrush(QBrush(QColor("orange")))
-        painter.setPen(QColor(Qt.red))
-        painter.setFont(QFont('Verdana', 14))
-        painter.drawText(355,285, "ECCE")
+        painter.setPen(QColor(Qt.orange))
+        painter.setFont(QFont('Verdana', 12))
+        painter.drawText(355,299, "ECCE")
 #        painter.fillRect(300, 284, 50, 16, Union[QBrush(QColor("orange"))])
-        painter.setPen(QColor(Qt.blue))
+        painter.setPen(QColor(Qt.orange))
         painter.drawRect(300, 284, 50, 16)          
 #        painter.setBrush(QBrush(QColor("yellow")))
 #        painter.fillRect(300, 300-32, 50, 16)
@@ -108,9 +106,9 @@ class TabulaDock(QDockWidget):
         Zsize = iface.mapCanvas().size()
         print(Zsize, "Width : " + str(Zsize.width()) + " / Height : " + str(Zsize.height()))
 
-        item = CircleCanvasItem(iface.mapCanvas())
-        item.setCenter(QgsPointXY(200,200))
-        item.setSize(80)
+#        item = CircleCanvasItem(iface.mapCanvas())
+#        item.setCenter(QgsPointXY(200,200))
+#        item.setSize(80)
 
         item2 = TextCanvasItem(iface.mapCanvas())
 #        item2.setCenter(QgsPointXY(250,250))
