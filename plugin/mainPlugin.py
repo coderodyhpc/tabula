@@ -4,7 +4,7 @@ import time
 
 from PyQt5.QtCore import Qt, QRectF
 from PyQt5.QtWidgets import QFileDialog, QMessageBox,QAction, QWidget, QDockWidget, QTabWidget, QMenu
-from PyQt5.QtGui import QIcon, QColor, QPainterPath, QPainter, QBrush
+from PyQt5.QtGui import QIcon, QColor, QPainterPath, QPainter, QBrush, QFont
 
 from qgis.core import (QgsCoordinateReferenceSystem, QgsMessageLog, Qgis, QgsProject, QgsLayerTree, QgsRasterLayer,
     QgsVectorLayer, QgsPoint, QgsPointXY, QgsGeometry, QgsMapRendererJob, QgsWkbTypes
