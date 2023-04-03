@@ -85,7 +85,7 @@ class Legenda(QgsMapCanvasItem):
         super().__init__(canvas)
         self.numeri = numeri
         self.pigmenti = pigmenti
-        print ("SELFPIGMENTI ",self.pigmenti)
+#        print ("SELFPIGMENTI ",self.pigmenti)
         self.altitudo = 12
         self.longitudo = 40
         
@@ -103,7 +103,7 @@ class Legenda(QgsMapCanvasItem):
 #            print ("III ",iii,self.numeri[iii],self.pigmenti[iii])
             painter.setPen(QColor(Qt.black))
             painter.setFont(QFont('Verdana', self.altitudo-2))
-            painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-1-(iii*self.altitudo), self.numeri[iii])
+            painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-2-(iii*self.altitudo), self.numeri[iii])
             if iii == 0:
                 painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255,0,0))          
             elif iii == 1:
@@ -154,7 +154,7 @@ class TabulaDock(QDockWidget):
         self.setWidget(tabs)
         self.tabs = tabs
         self.add_stamen_basemap()
-        Zsize = iface.mapCanvas().size()
+        Zsize = qgis.utils.iface.mapCanvas().size()
         print(Zsize, "Width : " + str(Zsize.width()) + " / Height : " + str(Zsize.height()))
 
 #        item = CircleCanvasItem(iface.mapCanvas())
