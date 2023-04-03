@@ -77,11 +77,15 @@ class RectangleCanvasItem(QgsMapCanvasItem):
         painter.drawText(405,199, "15.307")
 #        painter.fillRect(300, 284, 50, 16, Union[QBrush(QColor("orange"))])
 #        painter.setPen(QColor(Qt.red))
-        painter.fillRect(360, 188, 40, 12, QColor(127,127,127))          
+        painter.fillRect(360, 188, 40, 12, QColor(15,15,15))          
+        painter.fillRect(360, 176, 40, 12, QColor(127,127,127))          
 
 class Legenda(QgsMapCanvasItem):
-    def __init__(self, canvas):
+    def __init__(self, canvas, numeri, pigmenti):
         super().__init__(canvas)
+        self.numeri = numeri
+        self.pigmenti = pigmenti
+        self.altitudo = 12
         
     def setCenter(self, center):
         self.center = center
@@ -90,7 +94,14 @@ class Legenda(QgsMapCanvasItem):
         return self.center
 
     def paint(self, painter, option, widget):
-        print ("OAINNTER ",painter)
+        imum_sinister = [400, 400]
+        for iii in range(1:2):
+            print ("III ",iii,self.numeri[iii-1],self.pigmenti[iii-1])
+            painter.setPen(QColor(Qt.black))
+            painter.setFont(QFont('Verdana', self.altitudo-2))
+            painter.drawText(imum_sinister[0]+50, imum_sinister[1]-1+(iii-1)*self.altitudo, self.numeri[iii-1])
+            painter.fillRect(imum_sinister[0], imum_sinister[1]+(iii-1)*self.altitudo, 40, self.altitudo, QColor(self.pigmenti[iii-1]))          
+            
 #        painter.drawRect(100, 100, 100, 50)
         print ("After painter")
 #        painter.setBrush(QBrush(QColor("orange")))
@@ -122,6 +133,9 @@ class TabulaDock(QDockWidget):
 #        item2.setCenter(QgsPointXY(250,250))
 
         item3 = RectangleCanvasItem(iface.mapCanvas())
+        pigmentum_l = [(127, 0, 0), (227, 0, 0)] 
+        numerum_l = ["10.267", "25.963"] 
+        item4 = Legenda(iface.mapCanvas(), numerum_l, pigmentum_l)
 #        item3.setCenter(QgsPointXY(500,500))
 #        item3.setXSize(100)
 #        item3.setYSize(200)
