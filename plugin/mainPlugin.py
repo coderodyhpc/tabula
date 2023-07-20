@@ -3,7 +3,7 @@ from threading import Timer
 import time
 
 from PyQt5.QtCore import Qt, QRectF
-from PyQt5.QtWidgets import QFileDialog, QMessageBox,QAction, QWidget, QDockWidget, QTabWidget, QMenu
+from PyQt5.QtWidgets import QFileDialog, QMessageBox,QAction, QWidget, QDockWidget, QTabWidget, QMenu, QHBoxLayout, QLabel, QRadioButton
 from PyQt5.QtGui import QIcon, QColor, QPainterPath, QPainter, QBrush, QFont
 
 from qgis.core import (QgsCoordinateReferenceSystem, QgsMessageLog, Qgis, QgsProject, QgsLayerTree, QgsRasterLayer,
@@ -14,7 +14,7 @@ from qgis.gui import QgisInterface, QgsMapCanvas, QgsVertexMarker, QgsMapCanvasI
 class TextCanvasItem(QgsMapCanvasItem):
     def __init__(self, canvas):
         super().__init__(canvas)
-        
+
     def paint(self, painter, option, widget):
         painter.drawText(50, 50, "ONES")
 
@@ -22,11 +22,11 @@ class Legenda9(QgsMapCanvasItem):
     def __init__(self, canvas, numeri, titulus, unitas):
         super().__init__(canvas)
         self.numeri = numeri
-        self.titulus = titulus 
+        self.titulus = titulus
         self.unitas = unitas
         self.altitudo = 12
         self.longitudo = 40
-        
+
     def setCenter(self, center):
         self.center = center
 
@@ -47,33 +47,33 @@ class Legenda9(QgsMapCanvasItem):
             aaa = str(self.numeri[iii])
             painter.drawText(imum_sinister[0]+self.longitudo+5, imum_sinister[1]-2-(iii*self.altitudo), aaa[:7])
             if iii == 0:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255, 0, 0))          
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255, 0, 0))
             elif iii == 1:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255,64,64))          
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255,64,64))
             elif iii == 2:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255,128,128))          
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255,128,128))
             elif iii == 3:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255,191,191))          
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255,191,191))
             elif iii == 4:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255, 255, 255))          
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(255, 255, 255))
             elif iii == 5:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(191,191,255))          
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(191,191,255))
             elif iii == 6:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(128,129,255))          
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(128,129,255))
             elif iii == 7:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(64, 64, 255))          
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(64, 64, 255))
             elif iii == 8:
-                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(0, 0, 255))          
+                painter.fillRect(imum_sinister[0], imum_sinister[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(0, 0, 255))
 
 class Legenda11(QgsMapCanvasItem):
     def __init__(self, canvas, numeri, titulus, unitas):
         super().__init__(canvas)
         self.numeri = numeri
-        self.titulus = titulus 
+        self.titulus = titulus
         self.unitas = unitas
         self.altitudo = 12
         self.longitudo = 40
-        
+
     def setCenter(self, center):
         self.center = center
 
@@ -94,31 +94,31 @@ class Legenda11(QgsMapCanvasItem):
             aaa = str(self.numeri[iii])
             painter.drawText(imum_sinister11[0]+self.longitudo+5, imum_sinister11[1]-2-(iii*self.altitudo), aaa[:7])
             if iii == 0:
-                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(41, 27, 45))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(41, 27, 45))
             elif iii == 1:
-                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(78,141,73))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(78,141,73))
             elif iii == 2:
-                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(114, 254, 101))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(114, 254, 101))
             elif iii == 3:
-                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(179,228,72))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(179,228,72))
             elif iii == 4:
-                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(243, 201, 43))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(243, 201, 43))
             elif iii == 5:
-                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(248,154,34))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(248,154,34))
             elif iii == 6:
-                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(252, 106, 25))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(252, 106, 25))
             elif iii == 7:
-                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(218,69,17))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(218,69,17))
             elif iii == 8:
-                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(184, 32, 8))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(184, 32, 8))
             elif iii == 9:
-                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(164, 22, 4))          
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(164, 22, 4))
             elif iii == 10:
-                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(144, 12, 0))          
-                
+                painter.fillRect(imum_sinister11[0], imum_sinister11[1]-((iii+1)*self.altitudo), self.longitudo, self.altitudo, QColor(144, 12, 0))
+
 
 class TabulaDock(QDockWidget):
-    def __init__(self, iface: QgisInterface, dock_widget: QDockWidget) -> None:   
+    def __init__(self, iface: QgisInterface, dock_widget: QDockWidget) -> None:
         super().__init__('TABULA')
 #_____ TABS SET UP _____#
         tabs = QTabWidget()
@@ -136,14 +136,59 @@ class TabulaDock(QDockWidget):
         print ("RASA ", rasa, type(rasa))
         print ("RASAsize ", rasa.size())
 
+        self.imum_box = QHBoxLayout()
+        pigmemti_box = QHBoxLayout()
+        self.nuntium_1 = QLabel("Font color")
+        self.nuntium_1.setFont(QFont('Verdana', 12))
+        self.nuntium_1.setStyleSheet("font-weight: bold")
+        pigmemti_box.addWidget(self.nuntium_1)
+        self.t_albinus = QRadioButton("White",self)
+        self.t_albinus.setFont(QFont('Verdana', 12))
+        self.t_albinus.setChecked(True)
+#        self.t_albinus.toggled.connect(self.pigmemtum_has_changed)
+        self.t_nigreos = QRadioButton("Black",self)
+        self.t_nigreos.setFont(QFont('Verdana', 12))
+#        self.t_nigreos.toggled.connect(self.pigmemtum_has_changed)
+        pigmemti_box.addWidget(self.t_albinus)
+        pigmemti_box.addWidget(self.t_nigreos)
+        self.etiqueta = QLabel("   ")
+        self.etiqueta.setFont(QFont('Verdana', 12))
+##        pigmemti_box.addWidget(self.etiqueta)
+        pigmemti_box.addWidget(self.etiqueta)
+        palette_box = QHBoxLayout()
+        self.nuntium_2 = QLabel("Color palette")
+        self.nuntium_2.setFont(QFont('Verdana', 12))
+        self.nuntium_2.setStyleSheet("font-weight: bold")
+        palette_box.addWidget(self.nuntium_2)
+        self.red_blue = QRadioButton("Blue and red",self)
+        self.red_blue.setFont(QFont('Verdana', 12))
+        self.red_blue.setChecked(True)
+#        self.red_blue.toggled.connect(self.palette_has_changed)
+        palette_box.addWidget(self.red_blue)
+        self.echo_tops = QRadioButton("Echo tops",self)
+        self.echo_tops.setFont(QFont('Verdana', 12))
+        self.echo_tops.setChecked(False)
+#        self.echo_tops.toggled.connect(self.palette_has_changed)
+        palette_box.addWidget(self.echo_tops)
+        self.black_white = QRadioButton("Black and white",self)
+        self.black_white.setFont(QFont('Verdana', 12))
+        self.black_white.setChecked(False)
+#        self.black_white.toggled.connect(self.palette_has_changed)
+        palette_box.addWidget(self.black_white)
+        self.imum_box.addLayout(pigmemti_box)
+        self.imum_box.addLayout(palette_box)
+
+        self.tab1.setLayout(self.imum_box)
+
+
         title = "U10 (U at 10 m)"
         units = "m s-1"
-        numerum_l = ["aaa.111554254", "bbb.267", "c.963456","fffff.111", "50.267", "65.963","70.111", "80.267", "95.963"] 
+        numerum_l = ["aaa.111554254", "bbb.267", "c.963456","fffff.111", "50.267", "65.963","70.111", "80.267", "95.963"]
         item4 = Legenda9(iface.mapCanvas(), numerum_l, title, units)
-        
+
         title11 = "P (P at 10 m)"
         units11 = "Pa"
-        numerum_11 = ["10.111554254", "0.267", "35.963456","40.111", "50.267", "65.963", "70.111", "80.267", "95.963", "100.963", "1295.963"] 
+        numerum_11 = ["10.111554254", "0.267", "35.963456","40.111", "50.267", "65.963", "70.111", "80.267", "95.963", "100.963", "1295.963"]
         item5 = Legenda11(iface.mapCanvas(), numerum_11, title11, units11)
 
 
@@ -171,14 +216,14 @@ class TabulaDock(QDockWidget):
 #    # Again with a delay, which is a work-around as sometimes QGIS does not apply the CRS change above.
 #        Timer(0.5, setWGS84).start()
 
-        
+
 #__ Initialization of the graphic environment ___#
 class QGISPlugin():
     def __init__(self, iface: QgisInterface) -> None:
         self.iface = iface
         self.actions = []  # type: List[QAction]
         self.dock_widget = None # type: WrfDock
-        
+
     def initGui(self) -> None:
         """Create the menu entries and toolbar icons inside the QGIS GUI.
            Note: This method is called by QGIS.
@@ -255,4 +300,3 @@ class QGISPlugin():
         self.actions.append(action)
 
         return action
-    
