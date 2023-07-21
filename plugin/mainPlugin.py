@@ -3,7 +3,7 @@ from threading import Timer
 import time
 
 from PyQt5.QtCore import Qt, QRectF
-from PyQt5.QtWidgets import QFileDialog, QMessageBox,QAction, QWidget, QDockWidget, QTabWidget, QMenu, QHBoxLayout, QLabel, QRadioButton
+from PyQt5.QtWidgets import QFileDialog, QMessageBox,QAction, QWidget, QDockWidget, QTabWidget, QMenu, QHBoxLayout, QLabel, QRadioButton, QButtonGroup
 from PyQt5.QtGui import QIcon, QColor, QPainterPath, QPainter, QBrush, QFont
 
 from qgis.core import (QgsCoordinateReferenceSystem, QgsMessageLog, Qgis, QgsProject, QgsLayerTree, QgsRasterLayer,
@@ -137,6 +137,7 @@ class TabulaDock(QDockWidget):
         print ("RASAsize ", rasa.size())
 
         self.imum_box = QHBoxLayout()
+        classis_pigmemti = QButtonGroup()
         pigmemti_box = QHBoxLayout()
         self.nuntium_1 = QLabel("Font color")
         self.nuntium_1.setFont(QFont('Verdana', 12))
@@ -151,11 +152,16 @@ class TabulaDock(QDockWidget):
 #        self.t_nigreos.toggled.connect(self.pigmemtum_has_changed)
         pigmemti_box.addWidget(self.t_albinus)
         pigmemti_box.addWidget(self.t_nigreos)
-        self.etiqueta = QLabel("   ")
-        self.etiqueta.setFont(QFont('Verdana', 12))
-##        pigmemti_box.addWidget(self.etiqueta)
-        pigmemti_box.addWidget(self.etiqueta)
+        classis_pigmemti.addButton(self.t_albinus)
+        classis_pigmemti.addButton(self.t_nigreos)
+
+#-#        self.etiqueta = QLabel("   ")
+#-#        self.etiqueta.setFont(QFont('Verdana', 12))
+#-###        pigmemti_box.addWidget(self.etiqueta)
+#-#        pigmemti_box.addWidget(self.etiqueta)
+        
         palette_box = QHBoxLayout()
+        classis_palette = QButtonGroup()
         self.nuntium_2 = QLabel("Color palette")
         self.nuntium_2.setFont(QFont('Verdana', 12))
         self.nuntium_2.setStyleSheet("font-weight: bold")
@@ -175,6 +181,9 @@ class TabulaDock(QDockWidget):
         self.black_white.setChecked(False)
 #        self.black_white.toggled.connect(self.palette_has_changed)
         palette_box.addWidget(self.black_white)
+        classis_palette.addButton(self.red_blue)
+        classis_palette.addButton(self.echo_tops)
+        classis_palette.addButton(self.black_white)
         self.imum_box.addLayout(pigmemti_box)
         self.imum_box.addLayout(palette_box)
 
