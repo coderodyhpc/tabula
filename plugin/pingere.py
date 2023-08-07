@@ -1,4 +1,7 @@
+from typing import Optional, List, Iterable, Tuple, Any
 from qgis.gui import QgisInterface, QgsMapCanvas, QgsMapCanvasItem
+#import os
+#import sys
 
 # |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 # |||||||||||||||            SECTION TO CHANGE THE PROJECTION                 ||||||||||||||| 
