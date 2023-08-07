@@ -6,7 +6,7 @@ from PyQt5.QtGui import QMouseEvent, QColor
 class Emissions(QWidget):
     tab_active = pyqtSignal()
     def __init__(self, iface) -> None:   
-        super().__init__('Emissions')
+        super().__init__()
         print ("EMISSIONS")
         
         self.iface = iface
