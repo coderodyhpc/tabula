@@ -19,10 +19,11 @@ from tabula.plugin.emissions import Emissions
 class TabulaDock(QDockWidget):
     def __init__(self, iface: QgisInterface, dock_widget: QDockWidget) -> None:
         super().__init__('TABULA')
+        self.iface = iface
 #_____ TABS SET UP _____#
         tabs = QTabWidget()
         tabs.setStyleSheet('''QTabBar::tab {font-size: 12pt; font-family: Verdana; font-weight: bold; color: #004F00; height: 40px; width: 140px;}''')
-        self.tab1 = QWidget()
+        self.tab1 = Emissions(self.iface)
         tabs.addTab(self.tab1,"EMISSIONS")
         self.tab2 = QWidget()
         tabs.addTab(self.tab2,"WRF RESULTS")
