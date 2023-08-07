@@ -11,9 +11,9 @@ from qgis.core import (QgsCoordinateReferenceSystem, QgsMessageLog, Qgis, QgsPro
 )
 from qgis.gui import QgisInterface, QgsMapCanvas, QgsVertexMarker, QgsMapCanvasItem, QgsMapMouseEvent, QgsRubberBand
 
-from pingere import renovatio_formas, remove_group, tabulas, switch_band, get_raster_layers_in_group
-#from pingere import Legenda0, Legenda100, Legenda12, TuDataset, CMAQNetCDFVariable, CMAQ_Lambert_geo
-from emissions import Emissions
+from tabula.plugin.pingere import renovatio_formas, remove_group, tabulas, switch_band, get_raster_layers_in_group
+#from tabula.plugin.pingere import Legenda0, Legenda100, Legenda12, TuDataset, CMAQNetCDFVariable, CMAQ_Lambert_geo
+from tabula.plugin.emissions import Emissions
 
 class TabulaDock(QDockWidget):
     def __init__(self, iface: QgisInterface, dock_widget: QDockWidget) -> None:
