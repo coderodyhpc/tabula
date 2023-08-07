@@ -91,24 +91,6 @@ def renovatio_formas(canvas: QgsMapCanvas, servusII, pigmemtum='black', grossitu
 #    genus.addLayer(layer)
 
 
-def transfiguro_formas(servusII) -> ogr.DataSource:
-    drv = ogr.GetDriverByName('Memory')               # type: ogr.Driver
-    ds = drv.CreateDataSource('')                     # type: ogr.DataSource
-    sum_domains_to_datasource(ds, servusII)
-    return ds
-
-def sum_domains_to_datasource(ds: ogr.DataSource, servusII) -> None:
-    srs = osr.SpatialReference()
-    srs.ImportFromProj4(servusII.lex)
-    layer = ds.CreateLayer('domains', srs, geom_type=ogr.wkbPolygon) # type: ogr.Layer
-    bboxes = [BoundingBox2D(-servusII.dx*servusII.nx[0]/2,-servusII.dy*servusII.ny[0]/2,servusII.dx*servusII.nx[0]/2,servusII.dy*servusII.ny[0]/2)]
-    feature_defn = layer.GetLayerDefn()
-    for bbox in bboxes:
-        geom = get_bbox_polygon(bbox)
-        feature = ogr.Feature(feature_defn)
-        feature.SetGeometry(geom)
-        layer.CreateFeature(feature)
-
 def get_bbox_polygon(bbox: BoundingBox2D) -> ogr.Geometry:
     ring = ogr.Geometry(ogr.wkbLinearRing)
     ring.AddPoint(bbox.minx, bbox.miny)
