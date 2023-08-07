@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QTabWidget, QPushButton, QVBoxLayout, QHBoxLayout, QTreeWidget, QFileDialog, QSlider
-from PyQt5.QtCore import pyqtSignal, QEvent 
+from PyQt5.QtCore import Qt, pyqtSignal, QEvent 
 from PyQt5.QtGui import QMouseEvent, QColor, QFont
 
 
@@ -14,6 +14,8 @@ class Emissions(QWidget):
         self.vbox = QVBoxLayout()
         self.fileOpenButton = QPushButton('Click to open emissions file',self)
         self.fileOpenButton.clicked.connect(self.getncfiles)
+        self.create_variable_selector3()
+        self.create_time_selector()
         self.vbox.addWidget(self.fileOpenButton)
         
         self.setLayout(self.vbox)
