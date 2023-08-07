@@ -39,46 +39,46 @@ from qgis.core import QgsCoordinateReferenceSystem, QgsProject, QgsLayerTree, Qg
 # |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 # |||||||||||||||            SECTION TO PLOT LAYERS                 ||||||||||||||| 
 # |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-def tabulas(uris_and_names: List[Tuple[str,str,Optional[str]]], group_name=None,
-                visible: Union[bool,int]=0, expanded: bool=True) -> List[QgsRasterLayer]:
-#    time_0 = time.time()
-    registry = QgsProject.instance() # type: QgsProject
-    root = registry.layerTreeRoot() # type: QgsLayerTree
-    if group_name:
-        group = root.findGroup(group_name) # type: QgsLayerTreeGroup
-        if group is None:
-            group = root.insertGroup(0, group_name)
-            group.setExpanded(expanded)
-            visibility = (type(visible) == bool and visible) or (type(visible) == int)
-            group.setItemVisibilityChecked(visibility)
-        else:
-            group.removeAllChildren()
-#    time_1 = time.time()
-#    print ("TIME 1 ",time_1-time_0)
-    layers = []
-    for i, (uri, name, short_name) in enumerate(uris_and_names):
-#        time_2 = time.time()
-#        print ("TIME 2 ",time_2-time_1)
-        layer = QgsRasterLayer(uri, name)
-#        time_3 = time.time()
-#        print ("TIME 3 ",time_3-time_2)
+#def tabulas(uris_and_names: List[Tuple[str,str,Optional[str]]], group_name=None,
+#                visible: Union[bool,int]=0, expanded: bool=True) -> List[QgsRasterLayer]:
+##    time_0 = time.time()
+#    registry = QgsProject.instance() # type: QgsProject
+#    root = registry.layerTreeRoot() # type: QgsLayerTree
+#    if group_name:
+#        group = root.findGroup(group_name) # type: QgsLayerTreeGroup
+#        if group is None:
+#            group = root.insertGroup(0, group_name)
+#            group.setExpanded(expanded)
+#            visibility = (type(visible) == bool and visible) or (type(visible) == int)
+#            group.setItemVisibilityChecked(visibility)
+#        else:
+#            group.removeAllChildren()
+##    time_1 = time.time()
+##    print ("TIME 1 ",time_1-time_0)
+#    layers = []
+#    for i, (uri, name, short_name) in enumerate(uris_and_names):
+##        time_2 = time.time()
+##        print ("TIME 2 ",time_2-time_1)
+#        layer = QgsRasterLayer(uri, name)
+##        time_3 = time.time()
+##        print ("TIME 3 ",time_3-time_2)
         
-        if short_name:
-            layer.setShortName(short_name)
-#        fix_style(layer)
-        registry.addMapLayer(layer, False)
-        if group_name:
-            layer_node = group.addLayer(layer) # type: QgsLayerTreeLayer
-            visibility = (type(visible) == bool) or (type(visible) == int and i == visible)
-        else:
-            layer_node = root.insertLayer(0, layer)
-            visibility = (type(visible) == bool and visible) or (type(visible) == int and i == visible)
-        layer_node.setItemVisibilityChecked(visibility)
-        layers.append(layer)
-#        time_5 = time.time()
-#        print ("TIME 5 ",time_5-time_3)
+#        if short_name:
+#            layer.setShortName(short_name)
+##        fix_style(layer)
+#        registry.addMapLayer(layer, False)
+#        if group_name:
+#            layer_node = group.addLayer(layer) # type: QgsLayerTreeLayer
+#            visibility = (type(visible) == bool) or (type(visible) == int and i == visible)
+#        else:
+#            layer_node = root.insertLayer(0, layer)
+#            visibility = (type(visible) == bool and visible) or (type(visible) == int and i == visible)
+#        layer_node.setItemVisibilityChecked(visibility)
+#        layers.append(layer)
+##        time_5 = time.time()
+##        print ("TIME 5 ",time_5-time_3)
 
-    return layers
+#    return layers
 
 #def fix_style(layer: QgsRasterLayer) -> None:
 #    provider = layer.dataProvider() # type: QgsRasterDataProvider
@@ -121,19 +121,18 @@ def remove_group(group_name: str) -> None:
         return
     root.removeChildNode(group)    
 
-def switch_band(layer: QgsRasterLayer, index: int) -> None:
-    renderer = layer.renderer().clone() # type: QgsRasterRenderer
-    renderer.setInput(layer.renderer().input())
-    if isinstance(renderer, QgsSingleBandGrayRenderer):
-        renderer.setGrayBand(index + 1)
-    elif isinstance(renderer, QgsPalettedRasterRenderer):
-        # TODO need to replace renderer to set new band
-        pass
-    elif isinstance(renderer, QgsSingleBandPseudoColorRenderer):
-        renderer.setBand(index + 1)
-    layer.setRenderer(renderer)
-    layer.triggerRepaint()
-
+#def switch_band(layer: QgsRasterLayer, index: int) -> None:
+#    renderer = layer.renderer().clone() # type: QgsRasterRenderer
+#    renderer.setInput(layer.renderer().input())
+#    if isinstance(renderer, QgsSingleBandGrayRenderer):
+#        renderer.setGrayBand(index + 1)
+#    elif isinstance(renderer, QgsPalettedRasterRenderer):
+#        # TODO need to replace renderer to set new band
+#        pass
+#    elif isinstance(renderer, QgsSingleBandPseudoColorRenderer):
+#        renderer.setBand(index + 1)
+#    layer.setRenderer(renderer)
+#    layer.triggerRepaint()
     
 
 # |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
