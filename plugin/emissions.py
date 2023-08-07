@@ -2,7 +2,6 @@ from PyQt5.QtWidgets import QDockWidget, QTabWidget, QPushButton, QVBoxLayout, Q
 from PyQt5.QtCore import pyqtSignal, QEvent 
 from PyQt5.QtGui import QMouseEvent, QColor
 
-from qgis.core import QStringList
 
 class Emissions(QWidget):
     tab_active = pyqtSignal()
@@ -26,7 +25,7 @@ class Emissions(QWidget):
         dlg = QFileDialog()
         dlg.setFileMode(QFileDialog.AnyFile)
         dlg.setFilter("nc files (*.nc)")
-        filenames = QStringList()
+        filenames = []
 		
         if dlg.exec_():
             filenames = dlg.selectedFiles()
