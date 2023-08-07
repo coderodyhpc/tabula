@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QDockWidget, QTabWidget, QPushButton, QVBoxLayout, QFileDialog, QStringList
-from PyQt5.QtCore import pyqtSignal, QEvent
+from PyQt5.QtWidgets import QDockWidget, QTabWidget, QPushButton, QVBoxLayout, QFileDialog
+from PyQt5.QtCore import pyqtSignal, QEvent, QStringList
 from PyQt5.QtGui import QMouseEvent, QColor
 
 class Emissions(QWidget):
