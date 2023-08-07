@@ -1,15 +1,18 @@
 from typing import Optional, List, Iterable, Tuple, Any, Union
 from qgis.gui import QgisInterface, QgsMapCanvas, QgsMapCanvasItem
+
+from qgis.core import QgsCoordinateReferenceSystem, QgsProject, QgsLayerTree, QgsRasterLayer, QgsApplication
+
 #import os
 #import sys
 
 # |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 # |||||||||||||||            SECTION TO CHANGE THE PROJECTION                 ||||||||||||||| 
 # |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-def mutatio(lex):   
-    novus_CRS = QgsCoordinateReferenceSystem.fromProj4(lex)
-    qgsProject = QgsProject.instance() 
-    qgsProject.setCrs(novus_CRS)
+#def mutatio(lex):   
+#    novus_CRS = QgsCoordinateReferenceSystem.fromProj4(lex)
+#    qgsProject = QgsProject.instance() 
+#    qgsProject.setCrs(novus_CRS)
     
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 # |||||||||||||||            SECTION TO PLOT BOUNDARY(IES)                 ||||||||||||||| 
