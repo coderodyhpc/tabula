@@ -1,4 +1,4 @@
-from typing import Optional, List, Iterable, Tuple, Any
+from typing import Optional, List, Iterable, Tuple, Any, Union
 from qgis.gui import QgisInterface, QgsMapCanvas, QgsMapCanvasItem
 #import os
 #import sys
