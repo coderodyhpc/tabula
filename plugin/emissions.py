@@ -40,14 +40,15 @@ def FileDialog(directory='', forOpen=True, fmt='', isFolder=False):
 
 class Tempus:
     def __init__(self):
-        self.em_file = ['No file selected yet.']
+        self.em_file = ['No file selected yet']
 
 class Emissions(QWidget):
     tab_active = pyqtSignal()
     def __init__(self, iface) -> None:   
         super().__init__()
-        print ("EMISSIONS")
         self.tempus = Tempus
+        print ("EMISSIONS ",self.tempus)
+        print ("EMISSIONS2 ",self.tempus.em_file)
         self.iface = iface
         self.times = []
         self.vbox = QVBoxLayout()
