@@ -59,7 +59,7 @@ class Emissions(QWidget):
         self.emissions_label.setFont(QFont('Verdana', 14))
         self.vbox.addWidget(self.ap3time_label)
 #        self.fileOpenButton.clicked.connect(self.getncfiles)
-        self.fileOpenButton.clicked.connect(FileDialog)
+        self.fileOpenButton.clicked.connect(self.zzz)
         self.create_variable_selector3()
         self.create_time_selector()
         
@@ -78,7 +78,11 @@ class Emissions(QWidget):
             with f:
                 data = f.read()
                 self.contents.setText(data)        
-
+		    
+    def zzz(self):
+        self.nomen = FileDialog()
+	print ("New file is ", self.nomen)
+	    
     def create_variable_selector3(self) -> None:   #self.vbox defined in the constructor
         self.ap3time_label = QLabel('Emission species')
         self.ap3time_label.setFont(QFont('Verdana', 14))
