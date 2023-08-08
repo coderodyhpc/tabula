@@ -81,7 +81,7 @@ class Emissions(QWidget):
 		    
     def zzz(self):
         self.nomen = FileDialog()
-	print ("New file is ", self.nomen)
+        print ("New file is ", self.nomen)
 	    
     def create_variable_selector3(self) -> None:   #self.vbox defined in the constructor
         self.ap3time_label = QLabel('Emission species')
