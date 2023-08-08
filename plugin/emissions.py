@@ -48,14 +48,15 @@ class Emissions(QWidget):
         super().__init__()
         self.tempus = Tempus
         print ("EMISSIONS ",self.tempus)
-        print ("EMISSIONS2 ",self.tempus.em_file)
+        print ("EMISSIONS2 ",self.tempus.dict)
         self.iface = iface
         self.times = []
         self.vbox = QVBoxLayout()
         self.fileOpenButton = QPushButton('Click to open emissions file',self)
         self.fileOpenButton.setFont(QFont('Verdana', 12))
         self.vbox.addWidget(self.fileOpenButton)
-        self.file_nuntium = 'File : ' + self.tempus.em_file 	    
+#        self.file_nuntium = 'File : ' + self.tempus.em_file 	    
+        self.file_nuntium = 'File : '  	    
         self.emissions_label = QLabel(file_nuntium)
         self.emissions_label.setFont(QFont('Verdana', 14))
         self.vbox.addWidget(self.ap3time_label)
