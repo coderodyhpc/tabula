@@ -48,7 +48,12 @@ class Emissions(QWidget):
         super().__init__()
         self.tempus = Tempus
         print ("EMISSIONS ",self.tempus)
-        print ("EMISSIONS2 ",self.tempus.dict)
+#        print ("EMISSIONS2 ",self.tempus.dict)
+        for i in inspect.getmembers(self.tempus):
+            if not i[0].startswith('_'):
+                if not inspect.ismethod(i[1]):
+                    print(i)
+		
         self.iface = iface
         self.times = []
         self.vbox = QVBoxLayout()
