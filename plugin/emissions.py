@@ -1,25 +1,70 @@
-from PyQt5.QtWidgets import QWidget, QTabWidget, QPushButton, QVBoxLayout, QHBoxLayout, QTreeWidget, QFileDialog, QLabel, QSlider, QHeaderView
+from PyQt5.QtWidgets import QWidget, QTabWidget, QPushButton, QVBoxLayout, QHBoxLayout, QTreeWidget, QLabel, QSlider, QHeaderView
+from PyQt5.QtWidgets import QFileDialog, QDialog
 from PyQt5.QtCore import Qt, pyqtSignal, QEvent 
 from PyQt5.QtGui import QMouseEvent, QColor, QFont
 
+def FileDialog(directory='', forOpen=True, fmt='', isFolder=False):
+    options = QFileDialog.Options()
+    options |= QFileDialog.DontUseNativeDialog
+    options |= QFileDialog.DontUseCustomDirectoryIcons
+    dialog = QFileDialog()
+    dialog.setOptions(options)
+
+    dialog.setFilter(dialog.filter() | QtCore.QDir.Hidden)
+
+    # ARE WE TALKING ABOUT FILES OR FOLDERS
+    if isFolder:
+        dialog.setFileMode(QFileDialog.DirectoryOnly)
+    else:
+        dialog.setFileMode(QFileDialog.AnyFile)
+    # OPENING OR SAVING
+    dialog.setAcceptMode(QFileDialog.AcceptOpen) if forOpen else dialog.setAcceptMode(QFileDialog.AcceptSave)
+
+    # SET FORMAT, IF SPECIFIED
+    if fmt != '' and isFolder is False:
+        dialog.setDefaultSuffix(fmt)
+        dialog.setNameFilters([f'{fmt} (*.{fmt})'])
+
+    # SET THE STARTING DIRECTORY
+    if directory != '':
+        dialog.setDirectory(str(directory))
+    else:
+        dialog.setDirectory(str(ROOT_DIR))
+
+
+    if dialog.exec_() == QDialog.Accepted:
+        path = dialog.selectedFiles()[0]  # returns a list
+        return path
+    else:
+        return ''
+
+class Tempus:
+    def __init__(self):
+        self.em_file = ['No file selected yet.']
 
 class Emissions(QWidget):
     tab_active = pyqtSignal()
     def __init__(self, iface) -> None:   
         super().__init__()
         print ("EMISSIONS")
-        
+        self.tempus = Tempus
         self.iface = iface
         self.times = []
         self.vbox = QVBoxLayout()
         self.fileOpenButton = QPushButton('Click to open emissions file',self)
-        self.fileOpenButton.clicked.connect(self.getncfiles)
+        self.fileOpenButton.setFont(QFont('Verdana', 12))
+        self.vbox.addWidget(self.fileOpenButton)
+        self.file_nuntium = 'File : ' + self.tempus.em_file 	    
+        self.emissions_label = QLabel(file_nuntium)
+        self.emissions_label.setFont(QFont('Verdana', 14))
+        self.vbox.addWidget(self.ap3time_label)
+#        self.fileOpenButton.clicked.connect(self.getncfiles)
+        self.fileOpenButton.clicked.connect(FileDialog)
         self.create_variable_selector3()
         self.create_time_selector()
-        self.vbox.addWidget(self.fileOpenButton)
         
         self.setLayout(self.vbox)
-        
+
     def getncfiles(self):
         dlg = QFileDialog()
         dlg.setFileMode(QFileDialog.AnyFile)
