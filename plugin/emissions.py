@@ -56,7 +56,7 @@ class Emissions(QWidget):
         self.vbox.addWidget(self.fileOpenButton)
         self.file_nuntium = 'File : ' + self.tempus.em_file 	    
 #        self.file_nuntium = 'File : '  	    
-        self.emissions_label = QLabel(file_nuntium)
+        self.emissions_label = QLabel(self.file_nuntium)
         self.emissions_label.setFont(QFont('Verdana', 14))
         self.vbox.addWidget(self.ap3time_label)
 #        self.fileOpenButton.clicked.connect(self.getncfiles)
