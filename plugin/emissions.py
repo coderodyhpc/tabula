@@ -2,10 +2,10 @@ from PyQt5.QtWidgets import QWidget, QTabWidget, QPushButton, QVBoxLayout, QHBox
 from PyQt5.QtWidgets import QFileDialog, QDialog
 from PyQt5.QtCore import Qt, pyqtSignal, QEvent 
 from PyQt5.QtGui import QMouseEvent, QColor, QFont
-from definitions import ROOT_DIR
 from PyQt5 import QtCore
 
 def FileDialog(directory='', forOpen=True, fmt='', isFolder=False):
+    ROOT_DIR = '/home/ubuntu'
     options = QFileDialog.Options()
     options |= QFileDialog.DontUseNativeDialog
     options |= QFileDialog.DontUseCustomDirectoryIcons
