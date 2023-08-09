@@ -1,3 +1,5 @@
+import netCDF4 as nc
+
 from PyQt5.QtWidgets import QWidget, QTabWidget, QPushButton, QVBoxLayout, QHBoxLayout, QTreeWidget, QLabel, QSlider, QHeaderView
 from PyQt5.QtWidgets import QFileDialog, QDialog
 from PyQt5.QtCore import Qt, pyqtSignal, QEvent 
@@ -43,6 +45,7 @@ def FileDialog(directory='', forOpen=True, fmt='', isFolder=False):
 class Tempus:
     def __init__(self):
         self.em_file = ('No file selected yet')
+	self.lex = ('No projection')    
 
 class Emissions(QWidget):
     tab_active = pyqtSignal()
@@ -54,15 +57,25 @@ class Emissions(QWidget):
         self.times = []
         self.vbox = QVBoxLayout()
         self.fileOpenButton = QPushButton('Click to open emissions file',self)
-        self.fileOpenButton.setFont(QFont('Verdana', 12))
+#        self.fileOpenButton.setFont(QFont('Verdana', 12))
+        self.fileOpenButton.setFixedHeight(25)
+        self.fileOpenButton.setFont(QFont('Verdana', 16))
+        self.fileOpenButton.setStyleSheet("border: 2px solid black; background-color:black; color:white; font-weight: bold;")
         self.vbox.addWidget(self.fileOpenButton)
+#        self.fileOpenButton.clicked.connect(self.getncfiles)
+        self.fileOpenButton.clicked.connect(self.zzz)
+# FILE NUNTIUM      
         self.file_nuntium = 'File : ' + self.tempus.em_file 	    
 #        self.file_nuntium = 'File : '  	    
         self.emissions_label = QLabel(self.file_nuntium)
         self.emissions_label.setFont(QFont('Verdana', 14))
         self.vbox.addWidget(self.emissions_label)
-#        self.fileOpenButton.clicked.connect(self.getncfiles)
-        self.fileOpenButton.clicked.connect(self.zzz)
+# PROJ NUNTIUM      
+        self.proj_nuntium = 'Proj : ' + self.tempus.lex 	    
+        self.proj_label = QLabel(self.proj_nuntium)
+        self.proj_label.setFont(QFont('Verdana', 14))
+        self.vbox.addWidget(self.proj_label)
+# SELECTORS      
         self.create_variable_selector3()
         self.create_time_selector()
         
@@ -83,8 +96,39 @@ class Emissions(QWidget):
                 self.contents.setText(data)        
 		    
     def zzz(self):
-        self.nomen = FileDialog()
-        print ("New file is ", self.nomen)
+        self.tempus.em_file = FileDialog()
+        self.emissions_label.setText(self.tempus.em_file)
+
+        self.emissions_dataset = nc.Dataset(path)
+# Read variables & times
+        try:
+            variables = {}
+            for var_name in self.pm_dataset.variables:
+                var = self.emissions_dataset.variables[var_name]
+                dims = var.dimensions
+                extra_dim = None
+                try:
+                    description = var.getncattr('description')
+                except AttributeError:
+                    description = None
+                else:
+                    if description == '-':
+                        description = None
+                    else:
+                        description = description.lower()
+                try:
+                    units = var.getncattr('units')
+                except AttributeError:
+                    units = None
+                else:
+                    if units in ['-', 'dimensionless']:
+                        units = None
+#                variables[var_name] = CMAQNetCDFVariable(var_name,description,units,extra_dim,auto())
+# Read #times
+            temporibus = self.emissions_dataset.dimensions["TSTEP"].size
+        finally:
+            self.emissions_dataset.close()
+        print ("Variables ",variables)
 	    
     def create_variable_selector3(self) -> None:   #self.vbox defined in the constructor
         self.ap3time_label = QLabel('Emission species')
@@ -95,13 +139,15 @@ class Emissions(QWidget):
         self.hac_index = 1
         self.variable_selector = QTreeWidget()
         self.variable_selector.setStyleSheet('font-size: 13pt; font-family: Verdana;')
-        self.variable_selector.setHeaderLabels(['Species', 'Units'])
+        self.variable_selector.setHeaderLabels(['Species', 'Units', 'Max', 'Min'])
         self.variable_selector.setRootIsDecorated(False)
         self.variable_selector.setSortingEnabled(True)
         self.variable_selector.sortByColumn(0, Qt.AscendingOrder)
         self.variable_selector.header().setSectionsMovable(False)
         self.variable_selector.header().setSectionResizeMode(0, QHeaderView.Stretch)
         self.variable_selector.header().setSectionResizeMode(1, QHeaderView.Stretch)
+        self.variable_selector.header().setSectionResizeMode(2, QHeaderView.Stretch)
+        self.variable_selector.header().setSectionResizeMode(3, QHeaderView.Stretch)
         self.variable_selector.header().setFont(QFont('Verdana', 14))
 #        self.variable_selector.currentItemChanged.connect(self.on_variable_selected)
 #        self.variable_selector.setFixedHeight(115)
