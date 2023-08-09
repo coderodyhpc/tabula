@@ -61,22 +61,22 @@ class Emissions(QWidget):
         self.vbox = QVBoxLayout()
 # FILE NUNTIUM     
         nuntium1 = QHBoxLayout()    
-        self.file_label = QLabel('File : ')
+        self.file_label = QLabel('File :       ')
         self.file_label.setFont(QFont('Verdana', 14))
 #        self.file_nuntium = self.tempus.em_file 	    
         self.emissions_label = QLabel(self.tempus.em_file)
         self.emissions_label.setFont(QFont('Verdana', 14))
-        self.emissions_label.setStyleSheet("border: 2px solid black; background-color:slategray; color:white; font-weight: bold;")
+        self.emissions_label.setStyleSheet("border: 1px solid black; background-color:slategray; color:black; font-weight: bold;")
         nuntium1.addWidget(self.file_label)
         nuntium1.addWidget(self.emissions_label)
         self.vbox.addLayout(nuntium1)
 # PROJ NUNTIUM      
         nuntium2 = QHBoxLayout()    
-        self.proj_label = QLabel('Projection : ')
+        self.proj_label = QLabel('Projection :   ')
         self.proj_label.setFont(QFont('Verdana', 14))
         self.lex_label = QLabel(self.tempus.lex)
         self.lex_label.setFont(QFont('Verdana', 14))
-        self.lex_label.setStyleSheet("border: 2px solid black; background-color:lightsteelblue; color:white; font-weight: bold;")
+        self.lex_label.setStyleSheet("border: 1px solid black; background-color:lightsteelblue; color:black; font-weight: bold;")
         nuntium2.addWidget(self.proj_label)
         nuntium2.addWidget(self.lex_label)
         self.vbox.addLayout(nuntium2)
@@ -160,7 +160,7 @@ class Emissions(QWidget):
 # Read variables & times
         try:
             variables = {}
-            for var_name in self.pm_dataset.variables:
+            for var_name in self.emissions_dataset.variables:
                 var = self.emissions_dataset.variables[var_name]
                 dims = var.dimensions
                 extra_dim = None
