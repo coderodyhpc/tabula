@@ -1,7 +1,7 @@
 import netCDF4 as nc
 
 from PyQt5.QtWidgets import QWidget, QTabWidget, QPushButton, QVBoxLayout, QHBoxLayout, QTreeWidget, QLabel, QSlider, QHeaderView
-from PyQt5.QtWidgets import QFileDialog, QDialog
+from PyQt5.QtWidgets import QFileDialog, QDialog, QCheckBox 
 from PyQt5.QtCore import Qt, pyqtSignal, QEvent 
 from PyQt5.QtGui import QMouseEvent, QColor, QFont
 from PyQt5 import QtCore
