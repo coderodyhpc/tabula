@@ -157,7 +157,7 @@ class Emissions(QWidget):
         self.tempus.em_file = FileDialog()
         self.emissions_label.setText(self.tempus.em_file)
         self.emissions_dataset = nc.Dataset(self.tempus.em_file)
-	print ("EMISSIONS_dataset ", self.emissions_dataset)    
+        print ("EMISSIONS_dataset ", self.emissions_dataset)    
 # Read variables & times
         try:
             variables = {}
