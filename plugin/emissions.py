@@ -45,7 +45,7 @@ def FileDialog(directory='', forOpen=True, fmt='', isFolder=False):
 class Tempus:
     def __init__(self):
         self.em_file = ('No file selected yet')
-	self.lex = ('No projection')    
+        self.lex = ('No projection')    
 
 class Emissions(QWidget):
     tab_active = pyqtSignal()
