@@ -60,7 +60,7 @@ class Emissions(QWidget):
         self.times = []
         self.vbox = QVBoxLayout()
 # FILE NUNTIUM     
-        nuntium1 =QHBoxLayout    
+        nuntium1 = QHBoxLayout()    
         self.file_label = QLabel('File : ')
         self.file_label.setFont(QFont('Verdana', 14))
 #        self.file_nuntium = self.tempus.em_file 	    
@@ -71,7 +71,7 @@ class Emissions(QWidget):
         nuntium1.addWidget(self.emissions_label)
         self.vbox.addLayout(nuntium1)
 # PROJ NUNTIUM      
-        nuntium2 =QHBoxLayout    
+        nuntium2 = QHBoxLayout()    
         self.proj_label = QLabel('Projection : ')
         self.proj_label.setFont(QFont('Verdana', 14))
         self.lex_label = QLabel(self.tempus.lex)
