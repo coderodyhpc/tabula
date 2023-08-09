@@ -52,10 +52,27 @@ class Emissions(QWidget):
     def __init__(self, iface) -> None:   
         super().__init__()
         self.tempus = Tempus()
-        print ("EMISSIONS ",self.tempus)
+#        print ("EMISSIONS ",self.tempus)
         self.iface = iface
         self.times = []
         self.vbox = QVBoxLayout()
+# FILE NUNTIUM     
+	nuntium1 =QHBoxLayout    
+        self.file_label = QLabel('File : ')
+        self.file_label.setFont(QFont('Verdana', 14))
+#        self.file_nuntium = self.tempus.em_file 	    
+        self.emissions_label = QLabel(self.tempus.em_file)
+        self.emissions_label.setFont(QFont('Verdana', 14))
+        self.emissions_label.setStyleSheet("border: 2px solid black; background-color:slategray; color:white; font-weight: bold;")
+        nuntium1.addWidget(self.file_label)
+        nuntium1.addWidget(self.emissions_label)
+        self.vbox.addLayout(nuntium1)
+# PROJ NUNTIUM      
+        self.proj_nuntium = 'Proj : ' + self.tempus.lex 	    
+        self.proj_label = QLabel(self.proj_nuntium)
+        self.proj_label.setFont(QFont('Verdana', 14))
+        self.vbox.addWidget(self.proj_label)
+# FILE LOADER      
         self.fileOpenButton = QPushButton('Click to open emissions file',self)
 #        self.fileOpenButton.setFont(QFont('Verdana', 12))
         self.fileOpenButton.setFixedHeight(25)
@@ -64,42 +81,16 @@ class Emissions(QWidget):
         self.vbox.addWidget(self.fileOpenButton)
 #        self.fileOpenButton.clicked.connect(self.getncfiles)
         self.fileOpenButton.clicked.connect(self.zzz)
-# FILE NUNTIUM      
-        self.file_nuntium = 'File : ' + self.tempus.em_file 	    
-#        self.file_nuntium = 'File : '  	    
-        self.emissions_label = QLabel(self.file_nuntium)
-        self.emissions_label.setFont(QFont('Verdana', 14))
-        self.vbox.addWidget(self.emissions_label)
-# PROJ NUNTIUM      
-        self.proj_nuntium = 'Proj : ' + self.tempus.lex 	    
-        self.proj_label = QLabel(self.proj_nuntium)
-        self.proj_label.setFont(QFont('Verdana', 14))
-        self.vbox.addWidget(self.proj_label)
 # SELECTORS      
         self.create_variable_selector3()
         self.create_time_selector()
         
         self.setLayout(self.vbox)
 
-    def getncfiles(self):
-        dlg = QFileDialog()
-        dlg.setFileMode(QFileDialog.AnyFile)
-        dlg.setFilter("nc files (*.nc)")
-        filenames = []
-		
-        if dlg.exec_():
-            filenames = dlg.selectedFiles()
-            f = open(filenames[0], 'r')
-			
-            with f:
-                data = f.read()
-                self.contents.setText(data)        
-		    
     def zzz(self):
         self.tempus.em_file = FileDialog()
         self.emissions_label.setText(self.tempus.em_file)
-
-        self.emissions_dataset = nc.Dataset(path)
+        self.emissions_dataset = nc.Dataset(self.tempus.em_file)
 # Read variables & times
         try:
             variables = {}
