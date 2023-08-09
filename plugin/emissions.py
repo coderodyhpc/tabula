@@ -85,7 +85,7 @@ class Emissions(QWidget):
 #        self.fileOpenButton.setFont(QFont('Verdana', 12))
         self.fileOpenButton.setFixedHeight(25)
         self.fileOpenButton.setFont(QFont('Verdana', 16))
-        self.fileOpenButton.setStyleSheet("border: 2px solid black; background-color:black; color:white; font-weight: bold;")
+        self.fileOpenButton.setStyleSheet("border: 2px solid black; background-color:white; color:black; font-weight: bold;")
         self.vbox.addWidget(self.fileOpenButton)
 #        self.fileOpenButton.clicked.connect(self.getncfiles)
         self.fileOpenButton.clicked.connect(self.zzz)
@@ -157,6 +157,7 @@ class Emissions(QWidget):
         self.tempus.em_file = FileDialog()
         self.emissions_label.setText(self.tempus.em_file)
         self.emissions_dataset = nc.Dataset(self.tempus.em_file)
+	print ("EMISSIONS_dataset ", self.emissions_dataset)    
 # Read variables & times
         try:
             variables = {}
