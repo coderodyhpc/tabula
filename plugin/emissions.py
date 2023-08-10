@@ -95,7 +95,7 @@ class Emissions(QWidget):
         nuntium3.addWidget(self.grid1_label)
         self.gridx_label = QLabel('Grid dimensions :   ')
         self.gridx_label.setFont(QFont('Verdana', 14))
-	gridxy = str(self.tempus.nx) + ' x ' + str(self.tempus.ny) + 'points'   
+        gridxy = str(self.tempus.nx) + ' x ' + str(self.tempus.ny) + 'points'   
         self.gridx1_label = QLabel(self.tempus.gnomen)
         self.gridx1_label.setFont(QFont('Verdana', 14))
         self.gridx1_label.setStyleSheet("border: 1px solid black; background-color:white; color:black; font-weight: bold;")
