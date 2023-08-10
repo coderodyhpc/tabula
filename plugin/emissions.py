@@ -261,7 +261,7 @@ class Emissions(QWidget):
 
     def scribere(self) -> None:   
         self.gridx1_label.setText(self.tempus.gnomen)
-	nuntium = str(self.tempus.nx) + ' x ' + str(self.tempus.ny) + ' points'     
+        nuntium = str(self.tempus.nx) + ' x ' + str(self.tempus.ny) + ' points'     
         self.gridZ1_label.setText(str(self.tempus.ver_lay))
         self.gridx1_label.setText(nuntium)
 
