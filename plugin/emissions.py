@@ -49,7 +49,11 @@ class Tempus:
     def __init__(self):
         self.em_file = ('No file selected yet')
         self.lex = ('No projection')    
-
+        self.nx = 0    
+        self.ny = 0
+        self.ver_lay = 0
+        self.gnomen ='No name yet'
+	    
 class Emissions(QWidget):
     tab_active = pyqtSignal()
     def __init__(self, iface) -> None:   
@@ -80,6 +84,31 @@ class Emissions(QWidget):
         nuntium2.addWidget(self.proj_label)
         nuntium2.addWidget(self.lex_label)
         self.vbox.addLayout(nuntium2)
+# GRID NUNTIUM      
+        nuntium3 = QHBoxLayout()    
+        self.grid_label = QLabel('Grid name :   ')
+        self.grid_label.setFont(QFont('Verdana', 14))
+        self.grid1_label = QLabel(self.tempus.gnomen)
+        self.grid1_label.setFont(QFont('Verdana', 14))
+        self.grid1_label.setStyleSheet("border: 1px solid black; background-color:white; color:black; font-weight: bold;")
+        nuntium3.addWidget(self.grid_label)
+        nuntium3.addWidget(self.grid1_label)
+        self.gridx_label = QLabel('Grid dimensions :   ')
+        self.gridx_label.setFont(QFont('Verdana', 14))
+	gridxy = str(self.tempus.nx) + ' x ' + str(self.tempus.ny) + 'points'   
+        self.gridx1_label = QLabel(self.tempus.gnomen)
+        self.gridx1_label.setFont(QFont('Verdana', 14))
+        self.gridx1_label.setStyleSheet("border: 1px solid black; background-color:white; color:black; font-weight: bold;")
+        nuntium3.addWidget(self.gridx_label)
+        nuntium3.addWidget(self.gridx1_label)
+        self.gridZ_label = QLabel('Vertical layers :   ')
+        self.gridZ_label.setFont(QFont('Verdana', 14))
+        self.gridZ1_label = QLabel(str(self.tempus.ver_lay))
+        self.gridZ1_label.setFont(QFont('Verdana', 14))
+        self.gridZ1_label.setStyleSheet("border: 1px solid black; background-color:white; color:black; font-weight: bold;")
+        nuntium3.addWidget(self.gridZ_label)
+        nuntium3.addWidget(self.gridZ1_label)
+        self.vbox.addLayout(nuntium3)
 # FILE LOADER      
         self.fileOpenButton = QPushButton('Click to open emissions file',self)
 #        self.fileOpenButton.setFont(QFont('Verdana', 12))
