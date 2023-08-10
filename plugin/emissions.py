@@ -70,9 +70,9 @@ class Emissions(QWidget):
 #        self.file_nuntium = self.tempus.em_file 	    
         self.emissions_label = QLabel(self.tempus.em_file)
         self.emissions_label.setFont(QFont('Verdana', 14))
-        self.emissions_label.setStyleSheet("border: 1px solid black; background-color:slategray; color:black; font-weight: bold;")
+        self.emissions_label.setStyleSheet("border: 1px solid black; background-color:silver; color:black; font-weight: bold;")
         nuntium1.addWidget(self.file_label)
-        nuntium1.addWidget(self.emissions_label)
+        nuntium1.addWidget(self.emissions_label, stretch=1)
         self.vbox.addLayout(nuntium1)
 # PROJ NUNTIUM      
         nuntium2 = QHBoxLayout()    
@@ -80,9 +80,9 @@ class Emissions(QWidget):
         self.proj_label.setFont(QFont('Verdana', 14))
         self.lex_label = QLabel(self.tempus.lex)
         self.lex_label.setFont(QFont('Verdana', 14))
-        self.lex_label.setStyleSheet("border: 1px solid black; background-color:lightsteelblue; color:black; font-weight: bold;")
+        self.lex_label.setStyleSheet("border: 1px solid black; background-color:lightgray; color:black; font-weight: bold;")
         nuntium2.addWidget(self.proj_label)
-        nuntium2.addWidget(self.lex_label)
+        nuntium2.addWidget(self.lex_label, stretch=1)
         self.vbox.addLayout(nuntium2)
 # GRID NUNTIUM      
         nuntium3 = QHBoxLayout()    
@@ -92,7 +92,7 @@ class Emissions(QWidget):
         self.grid1_label.setFont(QFont('Verdana', 14))
         self.grid1_label.setStyleSheet("border: 1px solid black; background-color:white; color:black; font-weight: bold;")
         nuntium3.addWidget(self.grid_label)
-        nuntium3.addWidget(self.grid1_label)
+        nuntium3.addWidget(self.grid1_label, stretch=1)
         self.gridx_label = QLabel('Grid dimensions :   ')
         self.gridx_label.setFont(QFont('Verdana', 14))
         gridxy = str(self.tempus.nx) + ' x ' + str(self.tempus.ny) + 'points'   
@@ -261,8 +261,9 @@ class Emissions(QWidget):
 
     def scribere(self) -> None:   
         self.gridx1_label.setText(self.tempus.gnomen)
-        self.gridZ1_label.setText(self.tempus.ver_lay)
-#        self.gridx1_label.setText(self.tempus.gnomen)
+	nuntium = str(self.tempus.nx) + ' x ' + str(self.tempus.ny) + ' points'     
+        self.gridZ1_label.setText(str(self.tempus.ver_lay))
+        self.gridx1_label.setText(nuntium)
 
 	
 #|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
