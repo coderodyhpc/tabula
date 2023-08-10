@@ -187,10 +187,10 @@ class Emissions(QWidget):
         self.emissions_label.setText(self.tempus.em_file)
         self.emissions_dataset = nc.Dataset(self.tempus.em_file)
         print ("EMISSIONS_dataset ", self.emissions_dataset)    
-	self.tempus.nx = self.emissions_dataset.dimensions["COL"].size    
-	self.tempus.ny = self.emissions_dataset.dimensions["ROW"].size    
-	self.tempus.ver_lay = self.emissions_dataset.dimensions["LAY"].size 
-	self.scribere()    
+        self.tempus.nx = self.emissions_dataset.dimensions["COL"].size    
+        self.tempus.ny = self.emissions_dataset.dimensions["ROW"].size    
+        self.tempus.ver_lay = self.emissions_dataset.dimensions["LAY"].size 
+        self.scribere()    
 # Read variables & times
         try:
             variables = {}
