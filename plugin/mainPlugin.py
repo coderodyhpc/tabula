@@ -22,7 +22,7 @@ class TabulaDock(QDockWidget):
         self.iface = iface
 #_____ TABS SET UP _____#
         tabs = QTabWidget()
-        tabs.setStyleSheet('''QTabBar::tab {font-size: 12pt; font-family: Verdana; font-weight: bold; color: #0000A0; height: 40px; width: 200px;}''')
+        tabs.setStyleSheet('''QTabBar::tab {font-size: 12pt; font-family: Verdana; font-weight: bold; color: #4000A0; height: 40px; width: 200px;}''')
         self.tab1 = Emissions(self.iface)
         tabs.addTab(self.tab1,"EMISSIONS")
         self.tab2 = QWidget()
