@@ -52,7 +52,18 @@ class Tempus:
         self.nx = 0    
         self.ny = 0
         self.ver_lay = 0
+        self.dx = 0    
+        self.dy = 0
         self.gnomen ='No name yet'
+        self.lat1 = 33.0
+        self.lat2 = 60.0
+        self.lat0 = 35.115528
+        self.lon0 = -84.451544
+#        self.x_0 = -792000.0 
+#        self.y_0 = 1080000.0
+        self.lex = "+proj=lcc " + "+lat_1=" +str(self.lat1) + " +lat_2=" + str(self.lat2) + " +lat_0=" +str(self.lat0) + " +lon_0=" + str(self.lon0) \
+                 + " +x_0=0.0 +y_0=0.0 +datum=WGS84"
+        self.CMAQ_geo_transform = (0.0, 0.0, 0, 0.0, 0, 0.0)
 	    
 class Emissions(QWidget):
     tab_active = pyqtSignal()
@@ -109,6 +120,23 @@ class Emissions(QWidget):
         nuntium3.addWidget(self.gridZ_label)
         nuntium3.addWidget(self.gridZ1_label)
         self.vbox.addLayout(nuntium3)
+# DX & DY      
+        nuntium4 = QHBoxLayout()    
+        self.dx_label = QLabel('dx :   ')
+        self.dx_label.setFont(QFont('Verdana', 14))
+        self.dx1_label = QLabel(self.tempus.dx)
+        self.dx1_label.setFont(QFont('Verdana', 14))
+        self.dx1_label.setStyleSheet("border: 1px solid black; background-color:lightgray; color:black; font-weight: bold;")
+        nuntium4.addWidget(self.dx_label)
+        nuntium4.addWidget(self.dx1_label, stretch=1)
+        self.dy_label = QLabel('dy :   ')
+        self.dy_label.setFont(QFont('Verdana', 14))
+        self.dy1_label = QLabel(self.tempus.dx)
+        self.dy1_label.setFont(QFont('Verdana', 14))
+        self.dy1_label.setStyleSheet("border: 1px solid black; background-color:lightgray; color:black; font-weight: bold;")
+        nuntium4.addWidget(self.dy_label)
+        nuntium4.addWidget(self.dy1_label, stretch=1)
+        self.vbox.addLayout(nuntium4)
 # FILE LOADER      
         self.fileOpenButton = QPushButton('Click to open emissions file',self)
 #        self.fileOpenButton.setFont(QFont('Verdana', 12))
@@ -190,6 +218,14 @@ class Emissions(QWidget):
         self.tempus.nx = self.emissions_dataset.dimensions["COL"].size    
         self.tempus.ny = self.emissions_dataset.dimensions["ROW"].size    
         self.tempus.ver_lay = self.emissions_dataset.dimensions["LAY"].size 
+        self.tempus.dx = self.emissions_dataset.XCELL    
+#        self.tempus.dy = self.emissions_dataset["YCELL"]    
+        self.tempus.lat1 = self.emissions_dataset.P_ALP
+        self.tempus.lat2 = self.emissions_dataset.P_BET
+        self.tempus.lat0 = self.emissions_dataset.YCENT
+        self.tempus.lon0 = self.emissions_dataset.XCENT
+        self.tempus.lex = "+proj=lcc " + "+lat_1=" +str(self.tempus.lat1) + " +lat_2=" + str(self.tempus.lat2) + " +lat_0=" +str(self.tempus.lat0)  \
+                 + " +lon_0=" + str(self.tempus.lon0) + " +x_0=0.0 +y_0=0.0 +datum=WGS84"
         self.scribere()    
 # Read variables & times
         try:
@@ -264,6 +300,9 @@ class Emissions(QWidget):
         nuntium = str(self.tempus.nx) + ' x ' + str(self.tempus.ny) + ' points'     
         self.gridZ1_label.setText(str(self.tempus.ver_lay))
         self.gridx1_label.setText(nuntium)
+        self.dx1_label.setText(self.tempus.dx)
+        self.dy1_label.setText(self.tempus.dy)
+        self.lex_label.setText(self.tempus.lex)
 
 	
 #|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
