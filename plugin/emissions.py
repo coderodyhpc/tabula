@@ -294,6 +294,20 @@ class Emissions(QWidget):
         self.vbox.addWidget(self.time_label)
         self.vbox.addWidget(self.time_selector)
 
+    def init_variable_selector(self) -> None:
+#        self.puncta = self.get_dataset()
+##        print ("PUNCTA AT init_variable_selector ", self.puncta, type(self.puncta),self.get_dataset)
+#        selected = self.selected_variable.get(self.puncta.name)
+##        self.variable_selector.clear()
+        for var_name, variable in sorted(self.puncta.variables.items(), key=lambda v: v[1].name):
+            item = QTreeWidgetItem(self.variable_selector)
+            item.setData(0, Qt.UserRole, var_name)
+            var_name_text = var_name.upper()
+            item.setText(0, var_name_text)
+            item.setText(1, variable.units)
+            item.setText(2, "Ozone")
+            item.setText(3, "0.070 ppm (8 hours)")
+	
 
     def scribere(self) -> None:   
         self.gridx1_label.setText(self.tempus.gnomen)
