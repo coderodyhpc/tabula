@@ -124,14 +124,14 @@ class Emissions(QWidget):
         nuntium4 = QHBoxLayout()    
         self.dx_label = QLabel('dx :   ')
         self.dx_label.setFont(QFont('Verdana', 14))
-        self.dx1_label = QLabel(self.tempus.dx)
+        self.dx1_label = QLabel(str(self.tempus.dx))
         self.dx1_label.setFont(QFont('Verdana', 14))
         self.dx1_label.setStyleSheet("border: 1px solid black; background-color:lightgray; color:black; font-weight: bold;")
         nuntium4.addWidget(self.dx_label)
         nuntium4.addWidget(self.dx1_label, stretch=1)
         self.dy_label = QLabel('dy :   ')
         self.dy_label.setFont(QFont('Verdana', 14))
-        self.dy1_label = QLabel(self.tempus.dx)
+        self.dy1_label = QLabel(str(self.tempus.dy))
         self.dy1_label.setFont(QFont('Verdana', 14))
         self.dy1_label.setStyleSheet("border: 1px solid black; background-color:lightgray; color:black; font-weight: bold;")
         nuntium4.addWidget(self.dy_label)
@@ -314,8 +314,8 @@ class Emissions(QWidget):
         nuntium = str(self.tempus.nx) + ' x ' + str(self.tempus.ny) + ' points'     
         self.gridZ1_label.setText(str(self.tempus.ver_lay))
         self.gridx1_label.setText(nuntium)
-        self.dx1_label.setText(self.tempus.dx)
-        self.dy1_label.setText(self.tempus.dy)
+        self.dx1_label.setText(str(self.tempus.dx))
+        self.dy1_label.setText(str(self.tempus.dy))
         self.lex_label.setText(self.tempus.lex)
 
 	
