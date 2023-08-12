@@ -299,8 +299,8 @@ class Emissions(QWidget):
 ##        print ("PUNCTA AT init_variable_selector ", self.puncta, type(self.puncta),self.get_dataset)
 #        selected = self.selected_variable.get(self.puncta.name)
 ##        self.variable_selector.clear()
-        for var_name, variable in sorted(self.puncta.variables.items(), key=lambda v: v[1].name):
-            item = QTreeWidgetItem(self.variable_selector)
+        for var_name, variable in sorted(self..items(), key=lambda v: v[1].name):
+            item = QTreeWidgetItem(self.variable_selector3)
             item.setData(0, Qt.UserRole, var_name)
             var_name_text = var_name.upper()
             item.setText(0, var_name_text)
