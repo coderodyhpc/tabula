@@ -45,6 +45,14 @@ def FileDialog(directory='', forOpen=True, fmt='', isFolder=False):
     else:
         return ''
 
+class CMAQNetCDFVariable():
+    def __init__(self, name, description, units, extra_dim_name, source):
+        self.name = name
+        self.description = description
+        self.units = units
+        self.extra_dim_name = extra_dim_name
+        self.source = source
+
 class Tempus:
     def __init__(self):
         self.em_file = ('No file selected yet')
@@ -81,7 +89,7 @@ class Emissions(QWidget):
 #        self.file_nuntium = self.tempus.em_file 	    
         self.emissions_label = QLabel(self.tempus.em_file)
         self.emissions_label.setFont(QFont('Verdana', 14))
-        self.emissions_label.setStyleSheet("border: 1px solid black; background-color:silver; color:black; font-weight: bold;")
+        self.emissions_label.setStyleSheet("border: 1px solid black; background-color:lightgray; color:black; font-weight: bold;")
         nuntium1.addWidget(self.file_label)
         nuntium1.addWidget(self.emissions_label, stretch=1)
         self.vbox.addLayout(nuntium1)
@@ -101,7 +109,7 @@ class Emissions(QWidget):
         self.grid_label.setFont(QFont('Verdana', 14))
         self.grid1_label = QLabel(self.tempus.gnomen)
         self.grid1_label.setFont(QFont('Verdana', 14))
-        self.grid1_label.setStyleSheet("border: 1px solid black; background-color:white; color:black; font-weight: bold;")
+        self.grid1_label.setStyleSheet("border: 1px solid black; background-color:lightgray; color:black; font-weight: bold;")
         nuntium3.addWidget(self.grid_label)
         nuntium3.addWidget(self.grid1_label, stretch=1)
         self.gridx_label = QLabel('Grid dimensions :   ')
@@ -109,14 +117,14 @@ class Emissions(QWidget):
         gridxy = str(self.tempus.nx) + ' x ' + str(self.tempus.ny) + 'points'   
         self.gridx1_label = QLabel(self.tempus.gnomen)
         self.gridx1_label.setFont(QFont('Verdana', 14))
-        self.gridx1_label.setStyleSheet("border: 1px solid black; background-color:white; color:black; font-weight: bold;")
+        self.gridx1_label.setStyleSheet("border: 1px solid black; background-color:lightgray; color:black; font-weight: bold;")
         nuntium3.addWidget(self.gridx_label)
         nuntium3.addWidget(self.gridx1_label)
         self.gridZ_label = QLabel('Vertical layers :   ')
         self.gridZ_label.setFont(QFont('Verdana', 14))
         self.gridZ1_label = QLabel(str(self.tempus.ver_lay))
         self.gridZ1_label.setFont(QFont('Verdana', 14))
-        self.gridZ1_label.setStyleSheet("border: 1px solid black; background-color:white; color:black; font-weight: bold;")
+        self.gridZ1_label.setStyleSheet("border: 1px solid black; background-color:lightgray; color:black; font-weight: bold;")
         nuntium3.addWidget(self.gridZ_label)
         nuntium3.addWidget(self.gridZ1_label)
         self.vbox.addLayout(nuntium3)
@@ -219,11 +227,12 @@ class Emissions(QWidget):
         self.tempus.ny = self.emissions_dataset.dimensions["ROW"].size    
         self.tempus.ver_lay = self.emissions_dataset.dimensions["LAY"].size 
         self.tempus.dx = self.emissions_dataset.XCELL    
-#        self.tempus.dy = self.emissions_dataset["YCELL"]    
+        self.tempus.dy = self.emissions_dataset.YCELL    
         self.tempus.lat1 = self.emissions_dataset.P_ALP
         self.tempus.lat2 = self.emissions_dataset.P_BET
         self.tempus.lat0 = self.emissions_dataset.YCENT
         self.tempus.lon0 = self.emissions_dataset.XCENT
+        self.tempus.gnomen = self.emissions_dataset.GDNAM    
         self.tempus.lex = "+proj=lcc " + "+lat_1=" +str(self.tempus.lat1) + " +lat_2=" + str(self.tempus.lat2) + " +lat_0=" +str(self.tempus.lat0)  \
                  + " +lon_0=" + str(self.tempus.lon0) + " +x_0=0.0 +y_0=0.0 +datum=WGS84"
         self.scribere()    
@@ -250,7 +259,7 @@ class Emissions(QWidget):
                 else:
                     if units in ['-', 'dimensionless']:
                         units = None
-#                variables[var_name] = CMAQNetCDFVariable(var_name,description,units,extra_dim,auto())
+                variables[var_name] = CMAQNetCDFVariable(var_name,description,units,extra_dim,auto())
 # Read #times
             temporibus = self.emissions_dataset.dimensions["TSTEP"].size
         finally:
