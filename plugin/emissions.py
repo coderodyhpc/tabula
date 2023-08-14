@@ -256,6 +256,7 @@ class Emissions(QWidget):
         finally:
             self.emissions_dataset.close()
         print ("Variables ",variables)
+        self.init_variable_selector()	    
 	    
     def create_variable_selector3(self) -> None:   #self.vbox defined in the constructor
         self.ap3time_label = QLabel('Emission species')
