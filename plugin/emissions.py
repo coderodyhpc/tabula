@@ -1,4 +1,5 @@
 import netCDF4 as nc
+from enum import Enum, auto
 
 from PyQt5.QtWidgets import QWidget, QTabWidget, QPushButton, QVBoxLayout, QHBoxLayout, QTreeWidget, QLabel, QSlider, QHeaderView
 from PyQt5.QtWidgets import QFileDialog, QDialog, QCheckBox 
@@ -130,14 +131,14 @@ class Emissions(QWidget):
         self.vbox.addLayout(nuntium3)
 # DX & DY      
         nuntium4 = QHBoxLayout()    
-        self.dx_label = QLabel('dx :   ')
+        self.dx_label = QLabel('dx (m) :   ')
         self.dx_label.setFont(QFont('Verdana', 14))
         self.dx1_label = QLabel(str(self.tempus.dx))
         self.dx1_label.setFont(QFont('Verdana', 14))
         self.dx1_label.setStyleSheet("border: 1px solid black; background-color:lightgray; color:black; font-weight: bold;")
         nuntium4.addWidget(self.dx_label)
         nuntium4.addWidget(self.dx1_label, stretch=1)
-        self.dy_label = QLabel('dy :   ')
+        self.dy_label = QLabel('dy (m) :   ')
         self.dy_label.setFont(QFont('Verdana', 14))
         self.dy1_label = QLabel(str(self.tempus.dy))
         self.dy1_label.setFont(QFont('Verdana', 14))
